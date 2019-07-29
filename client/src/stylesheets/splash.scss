@@ -1,5 +1,6 @@
 .fa-dog {
   font-size: 35px;
+  margin-right: 10px;
 }
 
 .splash-container {
@@ -27,7 +28,14 @@
     font-size: 20px;
     width: 40%;
     line-height: 30px;
-    margin-top: 20px;
+    margin: 20px 0px;
+  }
+  button {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
   }
   transition-property: all;
   transition-duration: 0.5s;
@@ -75,3 +83,14 @@
 
 }
 
+.logo {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  h2 {
+    font-family: 'Lilita One';
+    color: rgba(0, 0, 0, 0.0);
+    -webkit-text-stroke: 3px black;
+    font-size: 33px;
+  }
+}

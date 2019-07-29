@@ -37,12 +37,18 @@ class Splash extends React.Component {
     this.bgNum++;
     setTimeout( () => {
       this.setState({ currentBg: this.bgImageClasses[this.bgNum % 3] })
-    }, 100)
+    }, 300)
   }
 
   render() {
     return (
       <div className={this.state.currentBg}>
+        <div className="nav">
+          <div className="logo">
+            <i className="fas fa-dog"></i>
+            <h2>okadopt</h2>
+          </div>
+        </div>
         <h1>ADOPTION DESERVES <br /> BETTER</h1>
         <p>
           On OkAdopt, you're more than just a photo. You have
@@ -51,6 +57,9 @@ class Splash extends React.Component {
           great choice in dog toys, and your large backyard. Because
           you deserve a dog to cuddle with.
         </p>
+        <button>
+          JOIN OKADOPT
+        </button>
       </div>
     )
   }

@@ -38,7 +38,8 @@ body {
   font-family: 'Roboto', sans-serif; }
 
 .fa-dog {
-  font-size: 35px; }
+  font-size: 35px;
+  margin-right: 10px; }
 
 .splash-container {
   min-height: 766px;
@@ -60,7 +61,13 @@ body {
     font-size: 20px;
     width: 40%;
     line-height: 30px;
-    margin-top: 20px; }
+    margin: 20px 0px; }
+  .splash-container button {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    width: 200px;
+    text-align: center; }
 
 .splash-bg-1-color {
   background-color: #21c3fd; }
@@ -94,5 +101,15 @@ body {
   background-position-x: 75%;
   background-size: 766px;
   background-position-y: 39%; }
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px; }
+  .logo h2 {
+    font-family: 'Lilita One';
+    color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke: 3px black;
+    font-size: 33px; }
 
 /*# sourceMappingURL=output.css.map */

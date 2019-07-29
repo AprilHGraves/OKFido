@@ -5,7 +5,7 @@ import Splash from './splash'
 function App() {
   return (
     <div className="App">
-      <Route path="/" component={Nav} />
+      {/* <Route path="/" component={Nav} /> */}
       <Route path="/" component={Splash}/>
     </div>
   );
