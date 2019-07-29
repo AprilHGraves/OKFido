@@ -15,7 +15,7 @@ const register = async data => {
       throw new Error(message);
     }
 
-    const { username, email, password } = data;
+    const { email, password } = data;
 
     const existingUser = await User.findOne({ email });
 
@@ -27,7 +27,6 @@ const register = async data => {
 
     const user = new User(
       {
-        username,
         email,
         password: hashedPassword
       },
@@ -72,12 +71,12 @@ const login = async data => {
     const user = await User.findOne({ email });
     
     if (!user) {
-      throw new Error("User does not exist")
+      throw new Error("That email or password is incorrect.")
     }
     
     const isValidPass = bcrypt.compareSync(password, user.password);
     if (!isValidPass) {
-      throw new Error("Invalid Password")
+      throw new Error("That email or password is incorrect.")
     }
 
     const token = jwt.sign({ id: user._id }, keys.SECRET_OR_KEY);
