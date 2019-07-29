@@ -17,8 +17,8 @@ export default {
     }
   `,
   REGISTER_USER: gql`
-    mutation RegisterUser($name: String!, $email: String!, $password: String!) {
-      register(name: $name, email: $email, password: $password) {
+    mutation RegisterUser($email: String!, $password: String!) {
+      register(email: $email, password: $password) {
         token
         loggedIn
       }
