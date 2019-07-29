@@ -62,20 +62,23 @@ class Register extends React.Component {
       case "email":
         return (
           <div>
-            <div>
+            <div className="auth-header">
               <Link to="/">&lt;</Link>
               <h2>About you</h2>
-              <h1>Welcome! Who are you?</h1>
+              
             </div>
             <div>
-              <button>
+              <h1>Welcome! Who are you?</h1>
+              <button className="auth-fb-button">
                 <i className="fab fa-facebook-f" />
                 SIGN UP WITH FACEBOOK
               </button>
-              <div>We never post to Facebook</div>
-              <div>
+              <p>We never post to Facebook</p>
+
+              <div className="auth-separator">
                 <span></span>
                 <span>OR</span>
+                <span></span>
               </div>
               <div>{this.state.message}</div>
               <div>
@@ -98,12 +101,13 @@ class Register extends React.Component {
       case "password":
         return (
           <div>
-            <div>
+            <div className="auth-header">
               <button onClick={this.switchPage("email")}>&lt;</button>
               <h2>About you</h2>
-              <h1>Create a password</h1>
+              
             </div>
             <div>
+              <h1>Create a password</h1>
               <div>
                 <div>Password</div>
                 <span>{this.state.message}</span>
@@ -153,8 +157,17 @@ class Register extends React.Component {
   render() {
     return (
       <div className="light-blue-bg">
-        <Link to="/">okfido</Link>
-        {this.displayPage()}
+        <Link to="/">
+          <div className="nav">
+            <div className="logo">
+              <i className="fas fa-dog"></i>
+              <h2>okfido</h2>
+            </div>
+          </div>
+        </Link>
+        <div className="auth-form-container">
+          {this.displayPage()}
+        </div>
       </div>
     )
   }

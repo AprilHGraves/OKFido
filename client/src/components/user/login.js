@@ -24,30 +24,42 @@ class Login extends React.Component {
   render() {
     return (
       <div className="light-blue-bg">
-        <Link to="/">okfido</Link>
-        <div>
-          {this.state.message && (
-            <div>
-              {this.state.message}
-            </div>
-          )}
-          <div>
-            <Link to="/">&lt;</Link>
-            <h2>Sign in</h2>
-            <div>👋</div>
+        {this.state.message && (
+          <div className="auth-error">
+            {this.state.message}
           </div>
-          <div>
-            <div>
+        )}
+        <Link to="/">
+          <div className="nav">
+            <div className="logo">
+              <i className="fas fa-dog"></i>
+              <h2>okfido</h2>
+            </div>
+          </div>
+        </Link>
+        <div className="auth-form-container">
+          <div className="auth-header">
+            <Link to="/home">&lt;</Link>
+            <h2>Sign in</h2>
+          </div>
+          <div className="auth-form">
+            <div className="auth-emoji">
+              <span role="img" aria-label="handwave">👋</span>
+            </div>
+
+            <div className="auth-input">
               <label>
-                Email
+                <h2> Email </h2>
                 <input
                   value={this.state.email}
                   onChange={this.alterState("email")}
                   placeholder="Email"
                 />
               </label>
+            </div>
+            <div className="auth-input">
               <label>
-                Password
+                <h2> Password </h2>
                 <input
                   type="password"
                   value={this.state.password}
@@ -67,11 +79,12 @@ class Login extends React.Component {
             onError={err => {
               setTimeout(() => {
                 this.setState({ message: ""});
-              },2000)
+              },3500)
               this.setState({ message: err.message.slice(15) })
             }
             }
           >
+
             {login => (
               <button
                 className="blue-bg"
