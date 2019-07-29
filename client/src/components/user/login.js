@@ -39,7 +39,7 @@ class Login extends React.Component {
         </Link>
         <div className="auth-form-container">
           <div className="auth-header">
-            <Link to="/home">&lt;</Link>
+            <Link to="/">&lt;</Link>
             <h2>Sign in</h2>
           </div>
           <div className="auth-form">

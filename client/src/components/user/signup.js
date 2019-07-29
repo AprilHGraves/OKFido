@@ -101,7 +101,7 @@ class Register extends React.Component {
         )
       case "password":
         return (
-          <div>
+          <div className="signup">
             <div className="auth-header">
               <button onClick={this.switchPage("email")}>&lt;</button>
               <h2>About you</h2>
