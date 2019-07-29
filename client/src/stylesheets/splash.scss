@@ -1,0 +1,96 @@
+.fa-dog {
+  font-size: 35px;
+  margin-right: 10px;
+}
+
+.splash-container {
+  min-height: 766px;
+  width: 100vw;
+  padding: 50px;
+  h1 {
+    font-family: 'Raleway';
+    font-size: 45px;
+    color: white;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px black;
+    -webkit-text-fill-color: white;
+    -moz-text-stroke: 2px black;
+    -moz-text-fill-color: white;
+    text-shadow: -1px 1px 0px black,
+    -2px 2px 0px black,
+    -3px 3px 0px black,
+    -4px 4px 0px black,
+    -5px 5px 0px black,
+    -6px 6px 0px black,
+    -7px 7px 0px black;
+  }
+  p {
+    font-size: 20px;
+    width: 40%;
+    line-height: 30px;
+    margin: 20px 0px;
+  }
+  button {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+  }
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+
+.splash-bg-1-color {
+  background-color: #21c3fd;
+}
+
+.splash-bg-2-color {
+  background-color: #f0a1c1;
+}
+
+.splash-bg-3-color {
+  background-color: #21bd66;
+}
+
+.splash-bg-1 {
+  background-image: url('../assets/images/splash-bg-1.png');
+  background-color: #21c3fd;
+  background-repeat: no-repeat;
+  background-position: calc(50% + 300px) calc(10% + 100px);
+  background-size: 900px;
+  background-position-y: 10%;
+
+}
+
+.splash-bg-2 {
+  background-image: url('../assets/images/splash-bg-2.png');
+  background-color: #f0a1c1;
+  background-repeat: no-repeat;
+  background-position-x: 75%;
+  background-size: 900px;
+  background-position-y: -25%;
+
+}
+
+.splash-bg-3 {
+  background-image: url('../assets/images/splash-bg-3.png');
+  background-color: #21bd66;
+  background-repeat: no-repeat;
+  background-position-x: 75%;
+  background-size: 766px;
+  background-position-y: 39%;
+
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  h2 {
+    font-family: 'Lilita One';
+    color: rgba(0, 0, 0, 0.0);
+    -webkit-text-stroke: 3px black;
+    font-size: 33px;
+  }
+}

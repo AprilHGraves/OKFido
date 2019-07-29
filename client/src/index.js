@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import ApolloClient from "apollo-client";
+import "./stylesheets/output.css"
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from "react-apollo";

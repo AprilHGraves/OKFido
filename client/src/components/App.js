@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import Nav from './Nav'
 import Signup from './user/signup';
 import Login from './user/login';
+import Splash from './splash'
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       Hello Waldo
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/login" component={Login} />
-      <Route exact path="/" component={Nav}/>
+      <Route path="/" component={Splash}/>
     </div>
   );
 }

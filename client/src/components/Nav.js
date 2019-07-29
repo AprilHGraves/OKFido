@@ -16,6 +16,7 @@ class Nav extends Component {
               if (data.isLoggedIn) {
                 return (
                   <div>
+                    <i className="fas fa-dog"></i>
                     <button
                       onClick={e => {
                         e.preventDefault();
@@ -31,6 +32,7 @@ class Nav extends Component {
               } else {
                 return (
                   <div>
+                    <i className="fas fa-dog"></i>
                     <Link to="/login">Login</Link>
                     <Link to="/signup">Sign Up</Link>
 
