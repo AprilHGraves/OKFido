@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 class Splash extends React.Component {
   constructor(props) {
@@ -48,7 +49,9 @@ class Splash extends React.Component {
             <i className="fas fa-dog"></i>
             <h2>okadopt</h2>
           </div>
-          <button>Sign in</button>
+          <Link to="/login">
+            <button>Sign in</button>
+          </Link>
         </div>
         <h1>ADOPTION DESERVES <br /> BETTER</h1>
         <p>
@@ -56,11 +59,14 @@ class Splash extends React.Component {
           a home to share, time to play, and a heart big enough
           to care for another living creature. Get noticed for your
           great choice in dog toys, and your large backyard. Because
-          you deserve a dog to cuddle with.
+          you deserve a dog to cuddle with. Cue the Sarah McLachlan 
+          "In the Arms of an Angel" ASPCA commercial.
         </p>
-        <button>
-          JOIN OKADOPT
-        </button>
+        <Link to="/signup">
+          <button>
+            JOIN OKADOPT
+          </button>
+        </Link>
       </div>
     )
   }
