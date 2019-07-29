@@ -61,14 +61,14 @@ class Register extends React.Component {
     switch (this.state.page) {
       case "email":
         return (
-          <div>
+          <div className="signup">
             <div className="auth-header">
               <Link to="/">&lt;</Link>
               <h2>About you</h2>
               
             </div>
             <div>
-              <h1>Welcome! Who are you?</h1>
+              <h1 className="auth-signup-header">Welcome! Who are you?</h1>
               <button className="auth-fb-button">
                 <i className="fab fa-facebook-f" />
                 SIGN UP WITH FACEBOOK
@@ -76,18 +76,19 @@ class Register extends React.Component {
               <p>We never post to Facebook</p>
 
               <div className="auth-separator">
-                <span></span>
-                <span>OR</span>
-                <span></span>
+                <span className="auth-separator-line"></span>
+                <span className="auth-separator-text">OR</span>
               </div>
-              <div>{this.state.message}</div>
-              <div>
-                <input
-                  value={this.state.email}
-                  onChange={this.alterState("email")}
-                  placeholder="your.email@example.com"
-                />
-                <div>{this.state.message ? "!" : <i className="fas fa-check" />}</div>
+              <div className="auth-error-inline-form">{this.state.message}</div>
+              <div className="auth-form">
+                <div className="auth-input">
+                  <input
+                    value={this.state.email}
+                    onChange={this.alterState("email")}
+                    placeholder="your.email@example.com"
+                  />
+                  {/* <div className="auth-inline-input-icon">{this.state.message ? "!" : <i className="fas fa-check" />}</div> */}
+                </div>
               </div>
             </div>
             <button 
@@ -104,22 +105,22 @@ class Register extends React.Component {
             <div className="auth-header">
               <button onClick={this.switchPage("email")}>&lt;</button>
               <h2>About you</h2>
-              
             </div>
-            <div>
-              <h1>Create a password</h1>
-              <div>
+            <div className="auth-form">
+              <h1 className="auth-signup-header">Create a password</h1>
+
+              <div className="auth-input-signup-password-label">
                 <div>Password</div>
-                <span>{this.state.message}</span>
+                <span className="auth-error-inline-form">{this.state.message}</span>
               </div>            
-              <div>
+              <div className="auth-input-signup-password">
                 <input
                   type="password"
                   value={this.state.password}
                   onChange={this.alterState("password")}
                   placeholder="6 characters minimum"
                 />
-                <div>{this.state.message ? "!" : <i className="fas fa-check" />}</div>
+                {/* <div>{this.state.message ? "!" : <i className="fas fa-check" />}</div> */}
               </div>
             </div>            
             <Mutation

@@ -25,7 +25,7 @@ class Login extends React.Component {
     return (
       <div className="light-blue-bg">
         {this.state.message && (
-          <div className="auth-error">
+          <div className="auth-error-dropdown">
             {this.state.message}
           </div>
         )}

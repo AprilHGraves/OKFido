@@ -177,6 +177,17 @@ body {
         margin: 0 auto;
         width: calc(100% - 15px );
         max-width: 300px; }
+        .light-blue-bg .auth-form-container .auth-form .auth-input input {
+          width: calc(100% - 15px );
+          display: block;
+          padding: 10px 15px;
+          margin: 0 auto 10px;
+          border: none;
+          font-size: 15px;
+          line-height: 20px;
+          background-color: #fff;
+          color: #2a2f35;
+          border-radius: 3px; }
         .light-blue-bg .auth-form-container .auth-form .auth-input label {
           display: flex;
           flex-direction: column;
@@ -185,26 +196,15 @@ body {
           .light-blue-bg .auth-form-container .auth-form .auth-input label h2 {
             padding-bottom: 5px;
             font-size: 13px; }
-          .light-blue-bg .auth-form-container .auth-form .auth-input label input {
-            width: calc(100% - 15px );
-            display: block;
-            padding: 10px 15px;
-            margin: 0 auto 10px;
-            border: none;
-            font-size: 15px;
-            line-height: 20px;
-            background-color: #fff;
-            color: #2a2f35;
-            border-radius: 3px; }
       .light-blue-bg .auth-form-container .auth-form .auth-emoji {
         padding-bottom: 20px;
         font-size: 30px; }
 
-.blue-bg, .auth-fb-button {
+.auth-fb-button {
   background: #4c7bd9;
   padding: 20px;
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   border-radius: 3px;
   color: white;
   margin-top: 40px; }
@@ -217,7 +217,7 @@ body {
   .auth-fb-button .fa-facebook-f {
     margin-right: 10px; }
 
-.auth-error {
+.auth-error-dropdown {
   position: fixed;
   top: -80px;
   left: 0;
@@ -234,5 +234,92 @@ body {
     top: -80px; }
   25%,50%,75% {
     top: 0px; } }
+.auth-separator {
+  position: relative;
+  width: 100%;
+  height: 42px;
+  margin: 25px 0;
+  line-height: 42px; }
+  .auth-separator-line {
+    position: absolute;
+    top: 21px;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #4fc5d0; }
+  .auth-separator-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 42px;
+    width: 42px;
+    margin: auto;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: center;
+    color: #4fc5d0;
+    background: #b9efef;
+    border-radius: 50%;
+    border: 1px solid #4fc5d0; }
+
+.auth-error-inline-form {
+  font-size: 14px;
+  color: #fb674e;
+  text-align: right;
+  width: 100%;
+  max-width: 395px;
+  padding-bottom: 10px;
+  height: 20px; }
+
+.auth-signup-header {
+  font-size: 30px;
+  font-weight: 600; }
+
+.auth-inline-input-icon {
+  display: inline; }
+
+.gray-bg, .blue-bg {
+  background: #949aa6;
+  height: 58px;
+  margin: auto;
+  border-radius: 3px;
+  width: 100%;
+  max-width: 320px;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 20px; }
+
+.signup .gray-bg, .signup .blue-bg {
+  margin-left: 15px; }
+
+.blue-bg {
+  background: #4c7bd9; }
+
+.auth-input-signup-password-label {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding-bottom: 10px; }
+
+.auth-input-signup-password {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto; }
+  .auth-input-signup-password input {
+    width: calc(100% - 15px );
+    display: block;
+    padding: 10px 15px;
+    margin: 0 auto 10px;
+    border: none;
+    font-size: 15px;
+    line-height: 20px;
+    background-color: #fff;
+    color: #2a2f35;
+    border-radius: 3px; }
 
 /*# sourceMappingURL=output.css.map */
