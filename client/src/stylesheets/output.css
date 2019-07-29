@@ -43,7 +43,6 @@ body {
 
 .splash-container {
   min-height: 766px;
-  width: 100vw;
   padding: 50px;
   transition-property: all;
   transition-duration: 0.5s; }
@@ -67,7 +66,9 @@ body {
     color: white;
     padding: 20px;
     width: 200px;
-    text-align: center; }
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px; }
 
 .splash-bg-1-color {
   background-color: #21c3fd; }
@@ -101,6 +102,19 @@ body {
   background-position-x: 75%;
   background-size: 766px;
   background-position-y: 39%; }
+
+.nav {
+  display: flex;
+  justify-content: space-between; }
+  .nav button {
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+    border: 1px solid black;
+    width: 50px;
+    height: min-content;
+    font-size: 12px;
+    padding: 10px; }
 
 .logo {
   display: flex;

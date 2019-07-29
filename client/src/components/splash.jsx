@@ -48,6 +48,7 @@ class Splash extends React.Component {
             <i className="fas fa-dog"></i>
             <h2>okadopt</h2>
           </div>
+          <button>Sign in</button>
         </div>
         <h1>ADOPTION DESERVES <br /> BETTER</h1>
         <p>
