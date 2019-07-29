@@ -4,13 +4,14 @@ import Signup from './user/signup';
 import Login from './user/login';
 import Splash from './splash'
 
+import SplashFooter from './splash_footer'
 function App() {
   return (
     <div className="App">
-      Hello Waldo
+      <Route path="/" component={Splash} />
+      <Route path="/" component={SplashFooter}/>
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/login" component={Login} />
-      <Route path="/" component={Splash}/>
     </div>
   );
 }
