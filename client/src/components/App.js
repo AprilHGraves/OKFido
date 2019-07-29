@@ -8,8 +8,8 @@ import SplashFooter from './splash_footer'
 function App() {
   return (
     <div className="App">
-      <Route path="/" component={Splash} />
-      <Route path="/" component={SplashFooter}/>
+      <Route exact path="/" component={Splash} />
+      <Route exact path="/" component={SplashFooter}/>
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/login" component={Login} />
     </div>
