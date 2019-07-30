@@ -48,6 +48,35 @@ const getToken = async () => {
 //   return result;
 // }
 
+
+//shape dog data
+const dogTransform = (dog) => {
+  let photoUrl = null;
+  if (dog.photos[0]){
+    photoUrl = dog.photos[0].full;
+  } 
+
+  return {
+    id: dog.id,
+    age: dog.age,
+    gender: dog.gender,
+    size: dog.size,
+    name: dog.name,
+    description: dog.description,
+    photoUrl: photoUrl,
+    breeds: dog.breeds,
+    colors: dog.colors,
+    coat: dog.coat,
+    environment: dog.environment
+  }
+} 
+
+// remove dogs from result that don't have photos
+const dogListTransform = (dogs) => {
+  dogs = dogs.map(dogTransform);
+  return dogs.filter(dog => dog.photoUrl);
+}
+
 const getShibas = async () => {
   const token = await getToken();
 
@@ -61,16 +90,7 @@ const getShibas = async () => {
     json: true
   })
 
-  let dogs = result.animals.map(dog => {
-    let photoUrl = null;
-    if (dog.photos[0]){
-      photoUrl = dog.photos[0].full
-    }
-    return Object.assign({}, dog, { photoUrl })
-  })
-
-  dogs = dogs.filter(dog => dog.photoUrl)
-  return dogs;
+  return dogListTransform(result.animals);
 }
 
 
