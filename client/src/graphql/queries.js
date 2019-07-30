@@ -6,5 +6,17 @@ export default {
     query IsUserLoggedIn {
       isLoggedIn @client
     }
+  `,
+  FETCH_SHIBAS: gql`
+    query FetchDogs {
+      dogs {
+        id,
+        age,
+        gender,
+        size,
+        name,
+        description
+      }
+    }
   `
 }

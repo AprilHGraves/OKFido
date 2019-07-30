@@ -9,14 +9,14 @@ const expressGraphQL = require("express-graphql");
 const cors = require("cors");
 const app = express();
 
-const petfinder = require('./services/petfinder')
+// const petfinder = require('./services/petfinder')
 
-const petfinderTest = async() => {
-  const dogs = await petfinder.getShibas();
-  console.log(dogs)
-}
+// const petfinderTest = async() => {
+//   const dogs = await petfinder.getShibas();
+//   console.log(dogs)
+// }
 
-petfinderTest();
+// petfinderTest();
 
 if (!db) {
   throw new Error("You must provide a string to connect to MongoDB Atlas");

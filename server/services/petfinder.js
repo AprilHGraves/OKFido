@@ -60,8 +60,8 @@ const getShibas = async () => {
     auth: { bearer: token, sendImmediately: true },
     json: true
   })
-
-  return result;
+  console.log(result.animals[0])
+  return result.animals;
 }
 
 
