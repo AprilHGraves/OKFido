@@ -94,5 +94,17 @@ const getShibas = async () => {
   return dogListTransform(result.animals);
 }
 
+const getOneDog = async(dogId) => {
+  const token = await getToken();
 
-module.exports = { getShibas }
+  const result = await request({
+    method: 'GET',
+    url: `https://api.petfinder.com/v2/animals/${dogId}`,
+    auth: { bearer: token, sendImmediately: true },
+    json: true
+  })
+  return dogTransform(result.animal);
+}
+
+
+module.exports = { getShibas, getOneDog }

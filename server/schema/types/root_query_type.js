@@ -24,6 +24,13 @@ const RootQueryType = new GraphQLObjectType({
         return User.findById(args._id);
       }
     },
+    dog: {
+      type: DogType,
+      args: { dogId: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(_, args) {
+        return Petfinder.getOneDog(args.dogId)
+      }
+    },
     dogs: {
       type: new GraphQLList(DogType),
       // args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
