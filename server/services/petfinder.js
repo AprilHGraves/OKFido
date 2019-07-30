@@ -67,7 +67,8 @@ const dogTransform = (dog) => {
     breeds: dog.breeds,
     colors: dog.colors,
     coat: dog.coat,
-    environment: dog.environment
+    environment: dog.environment,
+    contact: dog.contact
   }
 } 
 
