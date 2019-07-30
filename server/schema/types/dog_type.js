@@ -2,6 +2,8 @@ const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLFloat, GraphQLBoolean, } = graphql;
 
 const DogBreedDescriptionType = require('./dog_breed_description_type');
+const DogColorDescriptionType = require('./dog_color_description_type');
+const DogEnvironmentDescriptionType = require('./dog_environment_description_type');
 
 const DogType = new GraphQLObjectType({
   name: "DogType",
@@ -15,9 +17,9 @@ const DogType = new GraphQLObjectType({
     description: { type: GraphQLString },
     photoUrl: { type: GraphQLString },
     breeds: { type: DogBreedDescriptionType },
-    // colors: { type: GraphQLObjectType },
+    colors: { type: DogColorDescriptionType },
     coat: { type: GraphQLString },
-    // environment: { type: GraphQLObjectType },
+    environment: { type: DogEnvironmentDescriptionType },
   })
 });
 
