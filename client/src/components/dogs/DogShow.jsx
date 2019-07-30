@@ -17,12 +17,22 @@ class DogShow extends React.Component {
           let dog = data.dog;
 
           return (
-            <div>
+            <div className="dog-show-container">
               <Nav />
               <div className=""></div>
               <div className="dog-show-info">
                 <DogShowHeader dog={dog}/>
-                <div className="dog-show-info-content"></div>
+                <div className="dog-show-info-content">
+                  <div className="dog-show-info-content-main">
+                    <div className="dog-show-desc">
+                      <div className="dog-show-desc-header">Description</div>
+                      <div className="dog-show-desc-contents">{dog.description}</div>
+                      
+                    </div>
+                  </div>
+                  <div className="dog-show-info-content-sidebar">
+                  </div>
+                </div>
               </div>
             </div>
           )

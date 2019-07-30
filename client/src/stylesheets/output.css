@@ -247,6 +247,45 @@ body {
             font-size: 15px;
             line-height: 26px; }
 
+.dog-show-container {
+  background-color: #f3f5f9;
+  height: 100vh; }
+
+.dog-show-info-content {
+  padding-top: 20px;
+  min-height: 420px;
+  width: 1000px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-left: auto;
+  margin-right: auto; }
+  .dog-show-info-content-main {
+    padding-top: 50px;
+    float: left;
+    width: 560px;
+    padding-right: 50px; }
+    .dog-show-info-content-main .dog-show-desc {
+      position: relative;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
+      .dog-show-info-content-main .dog-show-desc-header {
+        padding: 20px 20px 0;
+        margin-bottom: 8px;
+        color: #9d9dab;
+        font-size: 12px;
+        line-height: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        word-wrap: break-word; }
+      .dog-show-info-content-main .dog-show-desc-contents {
+        padding: 0 20px 20px;
+        color: #2a2f35;
+        font-size: 18px;
+        word-wrap: break-word;
+        white-space: pre-wrap; }
+
 .dog-items-list {
   width: 100%;
   max-width: 800px;
