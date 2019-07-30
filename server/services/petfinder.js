@@ -60,8 +60,17 @@ const getShibas = async () => {
     auth: { bearer: token, sendImmediately: true },
     json: true
   })
-  console.log(result.animals[0])
-  return result.animals;
+
+  let dogs = result.animals.map(dog => {
+    let photoUrl = null;
+    if (dog.photos[0]){
+      photoUrl = dog.photos[0].full
+    }
+    return Object.assign({}, dog, { photoUrl })
+  })
+
+  dogs = dogs.filter(dog => dog.photoUrl)
+  return dogs;
 }
 
 

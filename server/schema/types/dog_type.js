@@ -1,5 +1,5 @@
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLFloat, GraphQLBoolean, GraphQLList } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLFloat, GraphQLBoolean, } = graphql;
 
 const DogType = new GraphQLObjectType({
   name: "DogType",
@@ -11,7 +11,7 @@ const DogType = new GraphQLObjectType({
     size: { type: GraphQLString },
     name: { type: GraphQLString },
     description: { type: GraphQLString },
-    // photos: { type: GraphQLList },
+    photoUrl: { type: GraphQLString },
   })
 });
 

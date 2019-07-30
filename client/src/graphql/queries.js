@@ -15,7 +15,8 @@ export default {
         gender,
         size,
         name,
-        description
+        description,
+        photoUrl
       }
     }
   `
