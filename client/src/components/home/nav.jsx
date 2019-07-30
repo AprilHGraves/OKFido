@@ -15,7 +15,7 @@ class Nav extends React.Component {
           <Link to='/messages'>
             <i className="fas fa-comment"></i>
           </Link>
-          <Link>Logout</Link>
+          <Link to="#">Logout</Link>
         </div>
       </div>
     )
