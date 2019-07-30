@@ -2,6 +2,7 @@ import React from 'react'
 import Nav from '../home/nav';
 import Queries from '../../graphql/queries';
 import { Query } from "react-apollo";
+import DogShowHeader from './DogShowHeader';
 const { FETCH_ONE_DOG } = Queries;
 
 class DogShow extends React.Component {
@@ -20,23 +21,8 @@ class DogShow extends React.Component {
               <Nav />
               <div className=""></div>
               <div className="dog-show-info">
-                <div className="dog-show-info-inner">
-                  <div className="dog-show-info-inner-content">
-                    <div className="profile-thumb">
-                      <img src={dog.photoUrl} alt="profile"></img>
-                    </div>
-                    <div className="profile-basics">
-                      <h1>{dog.name}</h1>
-                      <div className="profile-basics-asl">
-                        <span className="profile-basics-asl-age">{dog.age}</span>
-                        <span className="profile-basics-asl-spacer">•</span>
-                        <span className="profile-basics-asl-location">{dog.contact.address.city}, {dog.contact.address.state}</span>
-                        <span className="profile-basics-asl-spacer">•</span>
-                        <span className="profile-basics-asl-match">50% Match</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <DogShowHeader dog={dog}/>
+                <div className="dog-show-info-content"></div>
               </div>
             </div>
           )
