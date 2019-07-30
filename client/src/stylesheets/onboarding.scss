@@ -1,0 +1,257 @@
+.light-blue-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #b9efef;
+  padding: 50px;
+}
+
+.sea-blue-bg {
+  background-color: #30b7c4;
+  height: 409px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+}
+
+.blue-bg {
+  background-color: #4c7bd9;
+}
+
+.gray-bg {
+  background-color: #949aa6;
+  cursor: default;
+}
+
+.blue-bg:hover {
+  background-color: #5984dc;
+}
+
+.onboarding-box {
+  position: absolute;
+  left: calc(50% - 287.5px);
+  bottom: 165px;
+  width: 575px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.onboarding-chatbox {
+  background-color: white;
+  padding: 25px 30px;
+  width: 200px;
+  height: 158px;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0,0,0,.25);
+  border-radius: 4px;
+}
+
+.onboarding-chatbox::after {
+  position: absolute;
+  content: "";
+  bottom: -6px;
+  left: 50%;
+  margin-left: -5px;
+  transform: rotate(45deg);
+  background: white;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid #a3d2d2;
+  border-bottom: 1px solid #a3d2d2;
+}
+
+.onboarding-chatbox-top {
+  font-weight: 700;
+  font-size: 24px;
+  color: #2a2f35;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.onboarding-chatbox-bottom {
+  font-size: 19px;
+  color: #2a2f35;
+  
+}
+
+.button {
+  border-radius: 4px;
+  text-align: center;
+}
+
+.next-btn {
+  width: 320px;
+  height: 60px;
+  color: white;
+  font-weight: 700;
+}
+
+.onboarding-img {
+  background-size: cover;
+  height: 97px;
+  width: 105px;
+  margin-top: 46px;
+  margin-bottom: 135px;
+}
+
+.weird-thing {
+  background-image: url('https://cdn.okccdn.com/media/img/illustrations/wright-png/ladder.png');  
+}
+
+.weird-thing-2 {
+  background-image: url('https://cdn.okccdn.com/media/img/illustrations/wright-png/them.png');
+}
+
+.prompt {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-inputs {
+  height: 365px;
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.red-txt {
+  color: #f95133;
+}
+
+.green-txt {
+  color: #1fc174;
+}
+
+.input-message {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.onboarding-input {
+  background-color: white;
+  padding: 1px 30px 1px 13px;
+  width: 188px;
+  height: 54px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+.input-icon {
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+}
+
+.profile-notice {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #2a2f35
+}
+
+.about-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  h4 {
+    font-weight: 400;
+  }
+}
+
+.back-btn {
+  position: absolute;
+  left: 10px;
+}
+
+.white-box {
+  background-color: white;
+  width: 336px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+.row {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.radio-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 180px;
+}
+
+.form-radio {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  border: 1px solid #ccd0d9;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  margin-left: 5px;
+}
+
+
+.form-radio:checked {
+  border: 1px solid #4c7bd9;
+}
+
+.form-radio:checked::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background-color: #4c7bd9;
+  height: 14px;
+  width: 14px;
+  left: 5px;
+  top: 5px;
+}
+
+.form-radio:hover {
+  border-color: #adb0b8;
+}
+
+.form-checkbox {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  border: 1px solid #4c7bd9;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  margin-left: 5px;
+}
+
+.form-checkbox:checked::before {
+  content: "\02143";
+  position: absolute;
+  border-radius: 50%;
+  color: #4c7bd9;
+  transform: rotate(40deg);
+  font-weight: 700;
+  height: 14px;
+  width: 14px;
+  left: 8px;
+  top: 5px;
+}

@@ -23,5 +23,33 @@ export default {
         loggedIn
       }
     }
+  `,
+  UPDATE_USER: gql`
+    mutation UpdateUser(
+      $id: ID!,
+      $username: String!,
+      $hasDogs: Boolean!,
+      $hasCats: Boolean!,
+      $hasChildren: Boolean!,
+      $zipcode: Number!,
+      $willTravel: Number!,
+      $likedSizes: Array!,
+      $likedGenders: Array!,
+      $likedAges: Array!
+    ) {
+      updateUser(
+        _id: $id,
+        username: $username,
+        hasDogs: $hasDogs,
+        hasCats: $hasCats,
+        hasChildren: $hasChildren,
+        zipcode: $zipcode,
+        willTravel: $willTravel,
+        likedSizes: $likedSizes,
+        likedGenders: $likedGenders,
+        likedAges: $likedAges,
+      )
+    }
+
   `
 }

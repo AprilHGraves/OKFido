@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLFloat, GraphQLBoolean } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNumber, GraphQLBoolean } = graphql;
 
 const UserType = new GraphQLObjectType({
   name: "UserType",
@@ -10,8 +10,7 @@ const UserType = new GraphQLObjectType({
     username: { type: GraphQLString },
     email: { type: GraphQLString },
     description: { type: GraphQLString },
-    lat: { type: GraphQLFloat },
-    lng: { type: GraphQLFloat },
+    zipcode: { type: GraphQLNumber},
     token: { type: GraphQLString },
     loggedIn: { type: GraphQLBoolean }
   })

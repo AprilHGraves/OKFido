@@ -123,7 +123,7 @@ class Register extends React.Component {
               onCompleted={data => {
                 const { token } = data.register;
                 localStorage.setItem("auth-token", token);
-                this.props.history.push("/");
+                this.props.history.push("/onboarding");
               }}
             >
               {register => (
