@@ -37,7 +37,12 @@ export default {
       photoUrl,
       contact {
         address {
+          address1
+          address2
           city
+          state
+          postcode
+          country
         }
       }
     }
