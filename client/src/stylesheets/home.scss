@@ -13,4 +13,39 @@
   left: 0;
   right: 0;
   z-index: 100;
+  color: white;
+  .nav-left {
+    left: 0;
+    padding-left: 15px;
+    position: absolute;
+    a {
+      position: relative;
+      color: #d6e1f9;
+      vertical-align: sub;
+      &:hover {
+        color: white;
+      }
+    }
+    .fa-dog {
+      line-height: 66px;
+    }
+  }
+  .nav-right {
+    right: 0;
+    padding-right: 18px;
+    position: absolute;
+    .fa-comment {
+      font-size: 35px;
+      line-height: 66px;
+      padding-right: 15px;
+    }
+    a {
+      position: relative;
+      color: #d6e1f9;
+      vertical-align: sub;
+      &:hover {
+        color: white;
+      }
+    }
+  }
 }

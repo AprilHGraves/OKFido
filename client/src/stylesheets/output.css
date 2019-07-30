@@ -160,7 +160,34 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100; }
+  z-index: 100;
+  color: white; }
+  .navigation .nav-left {
+    left: 0;
+    padding-left: 15px;
+    position: absolute; }
+    .navigation .nav-left a {
+      position: relative;
+      color: #d6e1f9;
+      vertical-align: sub; }
+      .navigation .nav-left a:hover {
+        color: white; }
+    .navigation .nav-left .fa-dog {
+      line-height: 66px; }
+  .navigation .nav-right {
+    right: 0;
+    padding-right: 18px;
+    position: absolute; }
+    .navigation .nav-right .fa-comment {
+      font-size: 35px;
+      line-height: 66px;
+      padding-right: 15px; }
+    .navigation .nav-right a {
+      position: relative;
+      color: #d6e1f9;
+      vertical-align: sub; }
+      .navigation .nav-right a:hover {
+        color: white; }
 
 .dog-items-list {
   width: 100%;
@@ -182,6 +209,8 @@ body {
   border-radius: 4px;
   width: 180px;
   padding: 20px; }
+  .dog-index-item:hover .dog-index-item-thumb {
+    transform: scale(1.05); }
   .dog-index-item-thumb {
     top: -20px;
     margin-bottom: -20px;
@@ -192,7 +221,8 @@ body {
     flex-shrink: 0;
     position: relative;
     object-fit: cover;
-    object-position: top; }
+    object-position: top;
+    transition: transform .25s ease; }
   .dog-index-item-info {
     text-align: center;
     align-self: stretch;

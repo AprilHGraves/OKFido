@@ -19,6 +19,11 @@
   border-radius: 4px;
   width: 180px;
   padding: 20px;
+  &:hover {
+    .dog-index-item-thumb {
+      transform: scale(1.05)
+    }
+  }
   &-thumb{
     top: -20px;
     margin-bottom: -20px;
@@ -30,6 +35,7 @@
     position: relative;
     object-fit: cover;
     object-position: top;
+    transition: transform .25s ease;
   }
   &-info {
     text-align: center;
