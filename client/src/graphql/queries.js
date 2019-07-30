@@ -16,7 +16,12 @@ export default {
         size,
         name,
         description,
-        photoUrl
+        photoUrl,
+        contact {
+          address {
+            city
+          }
+        }
       }
     }
   `

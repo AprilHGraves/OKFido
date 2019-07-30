@@ -1,7 +1,7 @@
 import Queries from '../../graphql/queries';
 import React from 'react';
 import { Query } from "react-apollo";
-import { Link } from 'react-router-dom';
+import DogIndexItem from './DogIndexItem';
 const { FETCH_SHIBAS } = Queries;
 
 const DogIndex = () => {
@@ -12,9 +12,12 @@ const DogIndex = () => {
         if (error) return `Error! ${error.message}`;
 
         return (
-          <ul>
+          <ul className="dog-items-list">
             {data.dogs.map(dog => (
-              <li>{dog.name}</li>
+                <DogIndexItem
+                  key={dog.id}
+                  dog={dog}
+                />
             ))}
           </ul>
         );
