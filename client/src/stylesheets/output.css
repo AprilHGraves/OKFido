@@ -173,7 +173,8 @@ body {
       .navigation .nav-left a:hover {
         color: white; }
     .navigation .nav-left .fa-dog {
-      line-height: 66px; }
+      line-height: 66px;
+      color: white; }
   .navigation .nav-right {
     right: 0;
     padding-right: 18px;
