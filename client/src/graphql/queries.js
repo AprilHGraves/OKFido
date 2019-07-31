@@ -56,6 +56,11 @@ export default {
         children,
         dogs,
         cats
+      },
+      breedInfo {
+        bred_for
+        temperament
+        life_span
       }
     }
   }

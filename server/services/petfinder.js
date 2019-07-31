@@ -50,6 +50,8 @@ const getToken = async () => {
 //   return result;
 // }
 
+const dogCache = {};
+
 
 //shape dog data
 const dogTransform = (dog) => {
@@ -98,6 +100,10 @@ const getShibas = async () => {
 }
 
 const getOneDog = async(dogId) => {
+  if (dogCache[dogId]){
+    return Object.assign({}, dogCache[dogId]);
+  }
+
   const token = await getToken();
 
   const result = await request({
@@ -109,7 +115,18 @@ const getOneDog = async(dogId) => {
   const dog = dogTransform(result.animal);
 
   //get html for page to scrape description bc the dumb api cuts it off
-  const pageResult = await request(result.animal.url)
+  const pageResultQuery = request(result.animal.url)
+
+  //get breed info from The Dog API
+  const breedResQuery = request({
+    method: 'GET',
+    url: `https://api.thedogapi.com/v1/breeds/search?q=${result.animal.breeds.primary}`,
+    headers: { "x-api-key": keys.DOG_KEY },
+    json: true
+  })
+
+  const [pageResult, breedRes] = await Promise.all([pageResultQuery, breedResQuery])
+  
   const $ = cheerio.load(pageResult);
 
   let desc = null
@@ -124,7 +141,13 @@ const getOneDog = async(dogId) => {
     dog.description = "No description provided."
   }
 
-  return dog;
+  if (breedRes[0]){
+    dog.breedInfo = breedRes[0]
+  }
+
+  //store the dog so we don't hit the api more than we need to
+  dogCache[dogId] = dog;
+  return Object.assign({}, dogCache[dogId]);;
 }
 
 

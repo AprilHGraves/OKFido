@@ -51,19 +51,21 @@ class DogShow extends React.Component {
           let envChild = "";
           if (dog.environment.children) {
             envChild = "Good with children"
+          } else if (dog.environment.children == null){
+            envChild = "Unknown if good with children"
           } else {
-            envChild = "Not good with children"
+            envChild = "Not good with children";
           }
 
           let envDogs = "";
-          if (dog.environment.children) {
+          if (dog.environment.dogs) {
             envDogs = "Good with other dogs"
           } else {
             envDogs = "Not good with other dogs"
           }
 
           let envCats = "";
-          if (dog.environment.children) {
+          if (dog.environment.cats) {
             envCats = "Good with cats"
           } else {
             envCats = "Not good with cats"
@@ -71,7 +73,6 @@ class DogShow extends React.Component {
 
           return (
             <div className="dog-show-container">
-              <Nav />
               <div className=""></div>
               <div className="dog-show-info">
                 <DogShowHeader dog={dog}/>
@@ -140,6 +141,37 @@ class DogShow extends React.Component {
                         </div>
                         <a href={dog.url}>Check me out on PetFinder</a>
                       </div>
+                    </div>
+                  </div>
+                  <div className="dog-show-info-content-main">
+                    <div className="dog-show-desc">
+                      <div className="dog-show-desc-header">Breed Information</div>
+                      <div className="dog-show-desc-contents">
+                        {dog.breedInfo.bred_for ? (
+                          <div>
+                            <h3>Bred for</h3>
+                            {dog.breedInfo.bred_for}
+                          </div>) : 
+                          (<div></div>) 
+                        }
+
+                        {dog.breedInfo.temperament ? (
+                          <div>
+                            <h3>Temperamnt</h3>
+                            {dog.breedInfo.temperament}
+                          </div>) :
+                          (<div></div>)
+                        }
+
+                        {dog.breedInfo.life_span ? (
+                          <div>
+                            <h3>Life Span</h3>
+                            {dog.breedInfo.life_span}
+                          </div>) :
+                          (<div></div>)
+                        }
+                      </div>
+
                     </div>
                   </div>
                 </div>

@@ -16,6 +16,7 @@
     float: left;
     width: 560px;
     padding-right: 50px;
+    padding-bottom: 20px;
     .dog-show-desc {
       position: relative;
       background-color: #fff;
@@ -42,6 +43,10 @@
         &--collapsed {
           max-height: 300px;
           overflow: hidden;
+        }
+        h3 {
+          font-weight: 600;
+          margin: 10px 0px 5px 0px;
         }
       }
     }
