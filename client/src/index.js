@@ -19,15 +19,15 @@ const cache = new InMemoryCache({
   dataIdFromObject: object => object._id || null
 });
 
-// try {
-//   // See above for additional options, including other storage providers.
-//   persistCache({
-//     cache,
-//     storage: window.localStorage,
-//   });
-// } catch (error) {
-//   console.error('Error restoring Apollo cache', error);
-// }
+try {
+  // See above for additional options, including other storage providers.
+  persistCache({
+    cache,
+    storage: window.localStorage,
+  });
+} catch (error) {
+  console.error('Error restoring Apollo cache', error);
+}
 
 const httpLink = createHttpLink({
   uri: "http://localhost:5000/graphql"
@@ -58,11 +58,7 @@ const client = new ApolloClient({
 });
 
 const token = localStorage.getItem("auth-token");
-cache.writeData({
-  data: {
-    _id: "",
-  }
-});
+
 
 if (token) {
   client
