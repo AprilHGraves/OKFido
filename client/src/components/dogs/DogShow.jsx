@@ -6,8 +6,30 @@ import DogShowHeader from './DogShowHeader';
 const { FETCH_ONE_DOG } = Queries;
 
 class DogShow extends React.Component {
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      descExpanded: false
+    }
+  }
+
+  expandDescription(){
+    this.setState({descExpanded: true})
+  }
+
   render() {
     let dogId = this.props.match.params.id;
+    let dogDescClass = 
+      this.state.descExpanded ? 
+      "dog-show-desc-contents" :
+        "dog-show-desc-contents dog-show-desc-contents--collapsed";
+    let expandButtonClass = 
+      this.state.descExpanded ?
+      "dog-show-desc-expander--hidden" :
+      "dog-show-desc-expander";
+    
     return (
       <Query query={FETCH_ONE_DOG} variables={{ dogId: dogId }}>
         {({ loading, error, data }) => {
@@ -26,8 +48,18 @@ class DogShow extends React.Component {
                   <div className="dog-show-info-content-main">
                     <div className="dog-show-desc">
                       <div className="dog-show-desc-header">Description</div>
-                      <div className="dog-show-desc-contents">{dog.description}</div>
-                      
+                      <div className={dogDescClass}>
+                        {dog.description}
+                      </div>
+                      <button 
+                        className={expandButtonClass}
+                        onClick={this.expandDescription.bind(this)}  
+                      >
+                        <div className="dog-show-desc-expander-bg"></div>
+                        <span className="dog-show-desc-expander-text">
+                          + More
+                        </span>
+                      </button>
                     </div>
                   </div>
                   <div className="dog-show-info-content-sidebar">

@@ -506,11 +506,43 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 1px;
         word-wrap: break-word; }
       .dog-show-info-content-main .dog-show-desc-contents {
+        position: relative;
         padding: 0 20px 20px;
         color: #2a2f35;
         font-size: 18px;
         word-wrap: break-word;
         white-space: pre-wrap; }
+        .dog-show-info-content-main .dog-show-desc-contents--collapsed {
+          max-height: 300px;
+          overflow: hidden; }
+
+.dog-show-desc-expander {
+  height: 180px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: left; }
+  .dog-show-desc-expander--hidden {
+    display: none; }
+  .dog-show-desc-expander-bg {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), #f3f5f9 80%, #f3f5f9);
+    height: 180px; }
+  .dog-show-desc-expander-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    transition: bottom .3s ease;
+    color: #4c7bd9;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px; }
 
 .dog-items-list {
   width: 100%;
