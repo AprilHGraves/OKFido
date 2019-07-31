@@ -101,7 +101,7 @@ const getShibas = async () => {
 
 const getOneDog = async(dogId) => {
   if (dogCache[dogId]){
-    return dogCache[dogId];
+    return Object.assign({}, dogCache[dogId]);
   }
 
   const token = await getToken();
@@ -147,7 +147,7 @@ const getOneDog = async(dogId) => {
 
   //store the dog so we don't hit the api more than we need to
   dogCache[dogId] = dog;
-  return dog;
+  return Object.assign({}, dogCache[dogId]);;
 }
 
 
