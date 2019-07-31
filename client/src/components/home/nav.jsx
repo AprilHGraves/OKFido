@@ -26,7 +26,7 @@ class Nav extends React.Component {
   }
 
   handleClickOutside(event) {
-    debugger;
+    // debugger;
     if (this.inside && !this.inside.contains(event.target) && event.target.id !== 'user-pic') {
       document.removeEventListener("mousedown", this.handleClickOutside);
       this.setState({ showNav: false });
