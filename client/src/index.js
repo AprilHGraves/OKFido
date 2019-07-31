@@ -59,6 +59,11 @@ const client = new ApolloClient({
 
 const token = localStorage.getItem("auth-token");
 
+cache.writeData({
+  data: {
+    _id: Boolean(token),
+  }
+});
 
 if (token) {
   client
