@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Query, ApolloConsumer } from "react-apollo";
 import Queries from "../graphql/queries";
-const { IS_LOGGED_IN } = Queries;
+const { GET_USER_ID } = Queries;
 
 
 class Nav extends Component {
@@ -11,9 +11,9 @@ class Nav extends Component {
     return (
       <ApolloConsumer>
         {client => (
-          <Query query={IS_LOGGED_IN}>
+          <Query query={GET_USER_ID}>
             {({ data }) => {
-              if (data.isLoggedIn) {
+              if (data._id) {
                 return (
                   <div>
                     <i className="fas fa-dog"></i>
@@ -21,7 +21,7 @@ class Nav extends Component {
                       onClick={e => {
                         e.preventDefault();
                         localStorage.removeItem("auth-token");
-                        client.writeData({ data: { isLoggedIn: false } });
+                        client.writeData({ data: { _id: "" } });
                         this.props.history.push("/");
                       }}
                     >
