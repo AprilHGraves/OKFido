@@ -1,0 +1,52 @@
+.home-container {
+  background-color: #f3f5f9;
+  width: 100%;
+}
+
+.navigation {
+  position: sticky;
+  width: 100%;
+  height: 66px;
+  background: #104da1;
+  border-bottom: 1px solid hsla(0,0%,100%,.1);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  color: white;
+  .nav-left {
+    left: 0;
+    padding-left: 15px;
+    position: absolute;
+    a {
+      position: relative;
+      color: #d6e1f9;
+      vertical-align: sub;
+      &:hover {
+        color: white;
+      }
+    }
+    .fa-dog {
+      line-height: 66px;
+      color: white;
+    }
+  }
+  .nav-right {
+    right: 0;
+    padding-right: 18px;
+    position: absolute;
+    .fa-comment {
+      font-size: 35px;
+      line-height: 66px;
+      padding-right: 15px;
+    }
+    a {
+      position: relative;
+      color: #d6e1f9;
+      vertical-align: sub;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
