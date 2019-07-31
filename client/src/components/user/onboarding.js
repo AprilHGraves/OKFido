@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mutation } from 'react-apollo';
+import { Mutation, Query } from 'react-apollo';
+import Queries from '../../graphql/queries';
 import Mutations from '../../graphql/mutations';
+const { GET_USER_ID } = Queries;
 const { UPDATE_USER } = Mutations;
 
 class Onboarding extends React.Component {
@@ -365,39 +367,47 @@ class Onboarding extends React.Component {
                 <span>This info will be visible to others</span>
               </div>
               {this.state.page === "ages" ? (
-                <Mutation
-                  mutation={UPDATE_USER}
-                  onCompleted={data => {
-                    this.props.history.push("/home");
-                  }}
-                  onError={err => {
-                    console.log(err)
-                  }}
-                >
-                  {updateUser => (
-                    <button
-                      className={`button next-btn ${this.state.error ? "gray-bg" : "blue-bg"}`}
-                      onClick={e => {
-                        e.preventDefault();
-                        updateUser({
-                          variables: {
-                            username: this.state.username,
-                            hasDogs: this.state.hasDogs,
-                            hasCats: this.state.hasCats,
-                            hasChildren: this.state.hasChildren,
-                            zipcode: this.state.zipcode,
-                            willTravel: this.state.distance,
-                            likedSizes: this.state.sizes,
-                            likedGenders: this.state.genders,
-                            likedAges: this.state.ages
-                          }
-                        });
+                <Query query={GET_USER_ID}>
+                  {({ data }) => (
+                    
+                    <Mutation
+                      mutation={UPDATE_USER}
+                      onCompleted={data => {
+                        this.props.history.push("/home");
+                      }}
+                      onError={err => {
+                        console.log(err)
                       }}
                     >
-                      SUBMIT
-                    </button>
+                      {updateUser => (
+                        <button
+                          className={`button next-btn ${this.state.error ? "gray-bg" : "blue-bg"}`}
+                          onClick={e => {
+                            e.preventDefault();
+                            const id = data._id;
+                            updateUser({
+                              variables: {
+                                id: id,
+                                username: this.state.username,
+                                hasDogs: this.state.hasDogs === "true",
+                                hasCats: this.state.hasCats === "true",
+                                hasChildren: this.state.hasChildren === "true",
+                                zipcode: Number(this.state.zipcode),
+                                willTravel: Number(this.state.distance),
+                                likedSizes: this.state.sizes,
+                                likedGenders: this.state.genders,
+                                likedAges: this.state.ages
+                              }
+                            });
+                          }}
+                        >
+                          SUBMIT
+                        </button>
+                      )}
+                    </Mutation>
                   )}
-                </Mutation>
+                </Query>
+
               ):(
                 <button
                   className={`button next-btn ${this.state.error ? "gray-bg" : "blue-bg"}`}

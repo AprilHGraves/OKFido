@@ -61,30 +61,34 @@ class Register extends React.Component {
     switch (this.state.page) {
       case "email":
         return (
-          <div>
-            <div>
+          <div className="signup">
+            <div className="auth-header">
               <Link to="/">&lt;</Link>
               <h2>About you</h2>
-              <h1>Welcome! Who are you?</h1>
+              
             </div>
             <div>
-              <button>
+              <h1 className="auth-signup-header">Welcome! Who are you?</h1>
+              <button className="auth-fb-button">
                 <i className="fab fa-facebook-f" />
                 SIGN UP WITH FACEBOOK
               </button>
-              <div>We never post to Facebook</div>
-              <div>
-                <span></span>
-                <span>OR</span>
+              <p>We never post to Facebook</p>
+
+              <div className="auth-separator">
+                <span className="auth-separator-line"></span>
+                <span className="auth-separator-text">OR</span>
               </div>
-              <div>{this.state.message}</div>
-              <div>
-                <input
-                  value={this.state.email}
-                  onChange={this.alterState("email")}
-                  placeholder="your.email@example.com"
-                />
-                <div>{this.state.message ? "!" : <i className="fas fa-check" />}</div>
+              <div className="auth-error-inline-form">{this.state.message}</div>
+              <div className="auth-form">
+                <div className="auth-input">
+                  <input
+                    value={this.state.email}
+                    onChange={this.alterState("email")}
+                    placeholder="your.email@example.com"
+                  />
+                  {/* <div className="auth-inline-input-icon">{this.state.message ? "!" : <i className="fas fa-check" />}</div> */}
+                </div>
               </div>
             </div>
             <button 
@@ -97,25 +101,26 @@ class Register extends React.Component {
         )
       case "password":
         return (
-          <div>
-            <div>
+          <div className="signup">
+            <div className="auth-header">
               <button onClick={this.switchPage("email")}>&lt;</button>
               <h2>About you</h2>
-              <h1>Create a password</h1>
             </div>
-            <div>
-              <div>
+            <div className="auth-form">
+              <h1 className="auth-signup-header">Create a password</h1>
+
+              <div className="auth-input-signup-password-label">
                 <div>Password</div>
-                <span>{this.state.message}</span>
+                <span className="auth-error-inline-form">{this.state.message}</span>
               </div>            
-              <div>
+              <div className="auth-input-signup-password">
                 <input
                   type="password"
                   value={this.state.password}
                   onChange={this.alterState("password")}
                   placeholder="6 characters minimum"
                 />
-                <div>{this.state.message ? "!" : <i className="fas fa-check" />}</div>
+                {/* <div>{this.state.message ? "!" : <i className="fas fa-check" />}</div> */}
               </div>
             </div>            
             <Mutation
@@ -124,6 +129,9 @@ class Register extends React.Component {
                 const { token } = data.register;
                 localStorage.setItem("auth-token", token);
                 this.props.history.push("/onboarding");
+              }}
+              onError={err => {
+                this.setState({message: err.message.slice(15)});
               }}
             >
               {register => (
@@ -153,8 +161,17 @@ class Register extends React.Component {
   render() {
     return (
       <div className="light-blue-bg">
-        <Link to="/">okfido</Link>
-        {this.displayPage()}
+        <Link to="/">
+          <div className="nav">
+            <div className="logo">
+              <i className="fas fa-dog"></i>
+              <h2>okfido</h2>
+            </div>
+          </div>
+        </Link>
+        <div className="auth-form-container">
+          {this.displayPage()}
+        </div>
       </div>
     )
   }

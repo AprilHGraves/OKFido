@@ -2,9 +2,9 @@ import gql from "graphql-tag";
 
 export default {
   
-  IS_LOGGED_IN: gql`
+  GET_USER_ID: gql`
     query IsUserLoggedIn {
-      isLoggedIn @client
+      _id @client,
     }
-  `
+  `,
 }

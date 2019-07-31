@@ -12,7 +12,7 @@ export default {
   VERIFY_USER: gql`
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
-        loggedIn
+        _id
       }
     }
   `,
@@ -31,11 +31,11 @@ export default {
       $hasDogs: Boolean!,
       $hasCats: Boolean!,
       $hasChildren: Boolean!,
-      $zipcode: Number!,
-      $willTravel: Number!,
-      $likedSizes: Array!,
-      $likedGenders: Array!,
-      $likedAges: Array!
+      $zipcode: Int!,
+      $willTravel: Int!,
+      $likedSizes: [String]!,
+      $likedGenders: [String]!,
+      $likedAges: [String]!
     ) {
       updateUser(
         _id: $id,
@@ -47,8 +47,10 @@ export default {
         willTravel: $willTravel,
         likedSizes: $likedSizes,
         likedGenders: $likedGenders,
-        likedAges: $likedAges,
-      )
+        likedAges: $likedAges
+      ) {
+        _id
+      }
     }
 
   `

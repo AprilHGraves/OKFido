@@ -5,14 +5,16 @@ import Login from './user/login';
 import Splash from './splash';
 import SplashFooter from './splash_footer';
 import Onboarding from './user/onboarding';
+import AuthRoute from '../util/route_util';
+
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" component={Splash} />
-      <Route exact path="/" component={SplashFooter}/>
-      <Route exact path="/onboarding" component={Onboarding} />
-      <Route exact path="/signup" component={Signup} />
-      <Route exact path="/login" component={Login} />
+      <AuthRoute exact path="/" component={Splash} routeType="auth"/>
+      <AuthRoute exact path="/" component={SplashFooter} routeType="auth"/>
+      <AuthRoute exact path="/onboarding" component={Onboarding} routeType="protected" />
+      <AuthRoute exact path="/signup" component={Signup} routeType="auth"/>
+      <AuthRoute exact path="/login" component={Login} routeType="auth"/>
     </div>
   );
 }

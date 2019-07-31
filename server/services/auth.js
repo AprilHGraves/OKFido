@@ -101,8 +101,7 @@ const verifyUser = async data => {
     const loggedIn = await User.findById(id).then(user => {
       return user ? true : false;
     });
-
-    return { loggedIn };
+    return { loggedIn, _id: id };
   } catch (err) {
     return { loggedIn: false };
   }

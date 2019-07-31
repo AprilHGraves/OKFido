@@ -1,6 +1,7 @@
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID, GraphQLList } = graphql;
+const { GraphQLObjectType, GraphQLBoolean, GraphQLString, GraphQLInt, GraphQLID, GraphQLList } = graphql;
 const mongoose = require("mongoose");
+const User = mongoose.model("users");
 const UserType = require('./types/user_type');
 const AuthService = require("../services/auth");
 
@@ -56,9 +57,9 @@ const mutation = new GraphQLObjectType({
         hasChildren: { type: GraphQLBoolean },
         zipcode: { type: GraphQLInt },
         willTravel: { type: GraphQLInt },
-        likedSizes: { type: GraphQLList},
-        likedGenders: { type: GraphQLList},
-        likedAges: { type: GraphQLList}
+        likedSizes: { type: new GraphQLList(GraphQLString)},
+        likedGenders: { type: new GraphQLList(GraphQLString)},
+        likedAges: { type: new GraphQLList(GraphQLString)}
       },
       resolve(_, { 
         _id,
@@ -72,6 +73,7 @@ const mutation = new GraphQLObjectType({
         likedGenders,
         likedAges
       }) {
+        console.log('hellooooo');
         return User.findOneAndUpdate({ _id },
           {
             username,
