@@ -119,6 +119,8 @@ const getOneDog = async(dogId) => {
   })
   if(desc) {
     dog.description = desc
+  } else {
+    dog.description = "No description provided."
   }
 
   return dog;

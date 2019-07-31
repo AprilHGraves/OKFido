@@ -38,6 +38,11 @@ class DogShow extends React.Component {
 
           let dog = data.dog;
 
+          if (dog.description === "No description provided."){
+            dogDescClass = "dog-show-desc-contents"
+            expandButtonClass = "dog-show-desc-expander--hidden"
+          }
+
           return (
             <div className="dog-show-container">
               <Nav />
