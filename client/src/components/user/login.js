@@ -74,7 +74,7 @@ class Login extends React.Component {
             onCompleted={data => {
               const { token } = data.login;
               localStorage.setItem("auth-token", token);
-              this.props.history.push("/");
+              this.props.history.push("/home");
             }}
             onError={err => {
               setTimeout(() => {
