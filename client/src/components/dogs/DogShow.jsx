@@ -42,7 +42,8 @@ class DogShow extends React.Component {
             return <></>
           }
           let dog = data.dog;
-
+          console.log(dog.breedInfo);
+          
           if (dog.description === "No description provided."){
             dogDescClass = "dog-show-desc-contents"
             expandButtonClass = "dog-show-desc-expander--hidden"
@@ -51,19 +52,21 @@ class DogShow extends React.Component {
           let envChild = "";
           if (dog.environment.children) {
             envChild = "Good with children"
+          } else if (dog.environment.children == null){
+            envChild = "Unknown if good with children"
           } else {
-            envChild = "Not good with children"
+            envChild = "Not good with children";
           }
 
           let envDogs = "";
-          if (dog.environment.children) {
+          if (dog.environment.dogs) {
             envDogs = "Good with other dogs"
           } else {
             envDogs = "Not good with other dogs"
           }
 
           let envCats = "";
-          if (dog.environment.children) {
+          if (dog.environment.cats) {
             envCats = "Good with cats"
           } else {
             envCats = "Not good with cats"

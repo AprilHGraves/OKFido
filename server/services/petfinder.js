@@ -124,6 +124,18 @@ const getOneDog = async(dogId) => {
     dog.description = "No description provided."
   }
 
+  //get breed info from The Dog API
+  const breedRes = await request({
+    method: 'GET',
+    url: `https://api.thedogapi.com/v1/breeds/search?q=${result.animal.breeds.primary}`,
+    headers: {"x-api-key": keys.DOG_KEY},
+    json: true
+  })
+
+  if (breedRes[0]){
+    dog.breedInfo = breedRes[0]
+  }
+
   return dog;
 }
 
