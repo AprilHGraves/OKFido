@@ -86,7 +86,7 @@ class Login extends React.Component {
                         }
                       });
                     });
-                  this.props.history.push("/home");
+                  
                 }}
                 onError={err => {
                   setTimeout(() => {

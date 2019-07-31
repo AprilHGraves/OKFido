@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mutation } from 'react-apollo';
+import { Mutation, ApolloConsumer } from 'react-apollo';
 import Mutations from '../../graphql/mutations';
-const { REGISTER_USER } = Mutations;
+const { REGISTER_USER, VERIFY_USER } = Mutations;
 
 class Register extends React.Component {
   constructor(props) {
@@ -122,35 +122,48 @@ class Register extends React.Component {
                 />
                 {/* <div>{this.state.message ? "!" : <i className="fas fa-check" />}</div> */}
               </div>
-            </div>            
-            <Mutation
-              mutation={REGISTER_USER}
-              onCompleted={data => {
-                const { token } = data.register;
-                localStorage.setItem("auth-token", token);
-                this.props.history.push("/onboarding");
-              }}
-              onError={err => {
-                this.setState({message: err.message.slice(15)});
-              }}
-            >
-              {register => (
-                <button
-                    className={this.state.message ? "gray-bg" : "blue-bg"}
-                    onClick={e => {
-                      e.preventDefault();
-                      register({
-                        variables: {
-                          email: this.state.email,
-                          password: this.state.password
-                        }
+            </div>
+            <ApolloConsumer>
+              {client => (
+                
+                <Mutation
+                  mutation={REGISTER_USER}
+                  onCompleted={data => {
+                    const { token } = data.register;
+                    localStorage.setItem("auth-token", token);
+                    client
+                      .mutate({ mutation: VERIFY_USER, variables: { token } })
+                      .then(({ data }) => {
+                        client.writeData({
+                          data: {
+                            _id: data.verifyUser._id
+                          }
+                        });
                       });
-                    }}
-                  >
-                    SIGN UP
-                </button>
+                  }}
+                  onError={err => {
+                    this.setState({message: err.message.slice(15)});
+                  }}
+                >
+                  {register => (
+                    <button
+                        className={this.state.message ? "gray-bg" : "blue-bg"}
+                        onClick={e => {
+                          e.preventDefault();
+                          register({
+                            variables: {
+                              email: this.state.email,
+                              password: this.state.password
+                            }
+                          });
+                        }}
+                      >
+                        SIGN UP
+                    </button>
+                  )}
+                </Mutation>
               )}
-            </Mutation>
+            </ApolloConsumer>
           </div>
         )
       default:
