@@ -563,9 +563,16 @@ input[type=number]::-webkit-outer-spin-button {
     float: right;
     width: 320px;
     padding-top: 50px; }
+    .dog-show-info-content-sidebar-details {
+      padding-bottom: 20px; }
+    .dog-show-info-content-sidebar-details-header {
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2a2f35; }
     .dog-show-info-content-sidebar-details-row {
-      padding-bottom: 10px; }
-      .dog-show-info-content-sidebar-details-row span {
+      padding: 10px 0px; }
+      .dog-show-info-content-sidebar-details-row span, .dog-show-info-content-sidebar-details-row div {
         color: #2a2f35;
         margin-right: 20px;
         font-size: 16px; }

@@ -50,9 +50,18 @@
     float: right;
     width: 320px;
     padding-top: 50px;
+    &-details {
+      padding-bottom: 20px;
+    }
+    &-details-header {
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2a2f35;
+    }
     &-details-row {
-      padding-bottom: 10px;
-      span {
+      padding: 10px 0px;
+      span, div {
         color: rgb(42, 47, 53);
         margin-right: 20px;
         font-size: 16px;

@@ -34,7 +34,11 @@ export default {
       size,
       name,
       description,
+      coat,
       photoUrl,
+      breeds {
+        primary
+      }
       contact {
         address {
           address1

@@ -21,10 +21,12 @@ class DogShow extends React.Component {
 
   render() {
     let dogId = this.props.match.params.id;
+
     let dogDescClass = 
       this.state.descExpanded ? 
       "dog-show-desc-contents" :
         "dog-show-desc-contents dog-show-desc-contents--collapsed";
+
     let expandButtonClass = 
       this.state.descExpanded ?
       "dog-show-desc-expander--hidden" :
@@ -36,11 +38,35 @@ class DogShow extends React.Component {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
 
+          if (!data.dog){
+            return <></>
+          }
           let dog = data.dog;
 
           if (dog.description === "No description provided."){
             dogDescClass = "dog-show-desc-contents"
             expandButtonClass = "dog-show-desc-expander--hidden"
+          }
+
+          let envChild = "";
+          if (dog.environment.children) {
+            envChild = "Good with children"
+          } else {
+            envChild = "Not good with children"
+          }
+
+          let envDogs = "";
+          if (dog.environment.children) {
+            envDogs = "Good with other dogs"
+          } else {
+            envDogs = "Not good with other dogs"
+          }
+
+          let envCats = "";
+          if (dog.environment.children) {
+            envCats = "Good with cats"
+          } else {
+            envCats = "Not good with cats"
           }
 
           return (
@@ -69,9 +95,43 @@ class DogShow extends React.Component {
                   </div>
                   <div className="dog-show-info-content-sidebar">
                     <div className="dog-show-info-content-sidebar-details">
+                      <span className="dog-show-info-content-sidebar-details-header">
+                        {dog.breeds.primary}
+                      </span>
                       <div className="dog-show-info-content-sidebar-details-row">
                         <span role="img" aria-label="target">🎯</span>
-                        <span>{dog.gender}, {dog.size}</span>
+                        <span>{dog.gender}, {dog.size}, {dog.coat} coat</span>
+                      </div>
+                      <div className="dog-show-info-content-sidebar-details-row">
+                        <span role="img" aria-label="child">🧒</span>
+                        <span>{envChild}</span>
+                      </div>
+                      <div className="dog-show-info-content-sidebar-details-row">
+                        <span role="img" aria-label="dog">🐕</span>
+                        <span>{envDogs}</span>
+                      </div>
+                      <div className="dog-show-info-content-sidebar-details-row">
+                        <span role="img" aria-label="cat">🐈</span>
+                        <span>{envCats}</span>
+                      </div>
+                    </div>
+                    <div className="dog-show-info-content-sidebar-details">
+                      <span className="dog-show-info-content-sidebar-details-header">
+                        contact
+                      </span>
+                      <div className="dog-show-info-content-sidebar-details-row">
+                        <div>
+                          {dog.contact.address.address1} 
+                        </div>
+                        <div>
+                          {dog.contact.address.address2}
+                        </div>
+                        <div>
+                          {dog.contact.address.city}, {dog.contact.address.state}
+                        </div>
+                        <div>
+                          {dog.contact.address.postcode} {dog.contact.address.country}
+                        </div>
                       </div>
                     </div>
                   </div>
