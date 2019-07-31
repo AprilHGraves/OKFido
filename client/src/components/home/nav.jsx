@@ -26,9 +26,9 @@ class Nav extends React.Component {
   }
 
   handleClickOutside(event) {
-    // debugger;
     if (this.inside && !this.inside.contains(event.target) && event.target.id !== 'user-pic') {
       document.removeEventListener("mousedown", this.handleClickOutside);
+      this.inside = undefined;
       this.setState({ showNav: false });
     }
   }
@@ -43,6 +43,7 @@ class Nav extends React.Component {
   toggleUserDropdown(event) {
     if (this.state.showNav) {
       document.removeEventListener("mousedown", this.handleClickOutside);
+      this.inside = undefined;
       this.setState({ showNav: false });
     } else {
       document.addEventListener("mousedown", this.handleClickOutside);
@@ -68,7 +69,6 @@ class Nav extends React.Component {
             className="fas fa-user"
             onClick={this.toggleUserDropdown}
           />
-          {/* <Link to="#">Logout</Link> */}
         </div>
         {this.state.showNav && (
           <ApolloConsumer>
@@ -92,6 +92,12 @@ class Nav extends React.Component {
                     </li>
                     <li
                       className="user-dropdown-lis"
+                      onClick={e => {
+                        e.preventDefault();
+                        localStorage.removeItem("auth-token");
+                        client.writeData({ data: { _id: "" } });
+                        this.props.history.push("/");
+                      }}
                     >
                       Sign Out
                     </li>

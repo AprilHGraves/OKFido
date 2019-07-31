@@ -8,7 +8,7 @@ import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from "react-apollo";
 import { onError } from "apollo-link-error";
 import { ApolloLink } from "apollo-link";
-import { persistCache } from 'apollo-cache-persist';
+// import { persistCache } from 'apollo-cache-persist';
 import { setContext } from "apollo-link-context";
 import { HashRouter } from 'react-router-dom';
 

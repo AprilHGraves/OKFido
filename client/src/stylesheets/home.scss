@@ -39,6 +39,11 @@
       font-size: 35px;
       line-height: 66px;
       padding-right: 15px;
+      cursor: pointer;
+      color: #d6e1f9;
+      &:hover {
+        color: white;
+      }
     }
     a {
       position: relative;
