@@ -46,6 +46,19 @@
       }
     }
   }
+  &-sidebar {
+    float: right;
+    width: 320px;
+    padding-top: 50px;
+    &-details-row {
+      padding-bottom: 10px;
+      span {
+        color: rgb(42, 47, 53);
+        margin-right: 20px;
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 .dog-show-desc-expander {

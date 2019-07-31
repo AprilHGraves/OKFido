@@ -44,6 +44,11 @@ export default {
           postcode
           country
         }
+      },
+      environment {
+        children,
+        dogs,
+        cats
       }
     }
   }

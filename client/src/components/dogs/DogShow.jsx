@@ -68,6 +68,12 @@ class DogShow extends React.Component {
                     </div>
                   </div>
                   <div className="dog-show-info-content-sidebar">
+                    <div className="dog-show-info-content-sidebar-details">
+                      <div className="dog-show-info-content-sidebar-details-row">
+                        <span role="img" aria-label="target">🎯</span>
+                        <span>{dog.gender}, {dog.size}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
