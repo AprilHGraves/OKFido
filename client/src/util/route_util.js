@@ -32,6 +32,7 @@ const AuthRoute = ({
           // render the component if the user is logged in
           return (
             <Route
+              
               {...rest}
               render={props =>
                 data._id ? (
