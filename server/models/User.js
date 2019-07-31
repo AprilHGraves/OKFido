@@ -18,10 +18,7 @@ const UserSchema = new Schema({
   description: {
     type: String,
   },
-  lat: {
-    type: Number
-  },
-  lng: {
+  zipcode: {
     type: Number
   },
   willTravel: {
