@@ -47,7 +47,7 @@ class Splash extends React.Component {
         <div className="nav">
           <div className="logo">
             <i className="fas fa-dog"></i>
-            <h2>okadopt</h2>
+            <h2>okfido</h2>
           </div>
           <Link to="/login">
             <button>Sign in</button>
@@ -55,16 +55,16 @@ class Splash extends React.Component {
         </div>
         <h1>ADOPTION DESERVES <br /> BETTER</h1>
         <p>
-          On OkAdopt, you're more than just a photo. You have
+          On OkFido, you're more than just a photo. You have
           a home to share, time to play, and a heart big enough
           to care for another living creature. Get noticed for your
-          great choice in dog toys, and your large backyard. Because
+          great choice in dog toys and your large backyard. Because
           you deserve a dog to cuddle with. Cue the Sarah McLachlan 
           "In the Arms of an Angel" ASPCA commercial.
         </p>
         <Link to="/signup">
           <button>
-            JOIN OKADOPT
+            JOIN OKFIDO
           </button>
         </Link>
       </div>
