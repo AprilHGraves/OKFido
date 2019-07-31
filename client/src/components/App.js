@@ -8,13 +8,18 @@ import Onboarding from './user/onboarding';
 import AuthRoute from '../util/route_util';
 import Home from './home/home'
 import DogShow from './dogs/DogShow';
+import Nav from './home/nav';
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <AuthRoute exact path="/" component={Splash} routeType="auth"/>
         <AuthRoute exact path="/onboarding" component={Onboarding} routeType="protected" />
+        <AuthRoute path="/" component={Nav} routeType="protected" />
+      </Switch>
+      <Switch>
+        <AuthRoute exact path="/" component={Splash} routeType="auth"/>
+        
         <AuthRoute exact path="/signup" component={Signup} routeType="auth"/>
         <AuthRoute exact path="/login" component={Login} routeType="auth"/>
         <AuthRoute exact path="/home" component={Home} routeType="protected" />

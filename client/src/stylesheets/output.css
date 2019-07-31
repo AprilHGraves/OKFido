@@ -409,7 +409,11 @@ input[type=number]::-webkit-outer-spin-button {
     .navigation .nav-right .fa-comment, .navigation .nav-right .fa-user {
       font-size: 35px;
       line-height: 66px;
-      padding-right: 15px; }
+      padding-right: 15px;
+      cursor: pointer;
+      color: #d6e1f9; }
+      .navigation .nav-right .fa-comment:hover, .navigation .nav-right .fa-user:hover {
+        color: white; }
     .navigation .nav-right a {
       position: relative;
       color: #d6e1f9;
