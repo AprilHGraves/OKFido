@@ -51,7 +51,6 @@ class Nav extends React.Component {
   }
 
   render(){
-    const myId = 5;
     return (
       <div className="navigation">
         <div className="nav-left">

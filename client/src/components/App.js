@@ -12,15 +12,15 @@ import DogShow from './dogs/DogShow';
 function App() {
   return (
     <div className="App">
-      <AuthRoute exact path="/" component={Splash} routeType="auth"/>
-      <AuthRoute exact path="/" component={SplashFooter} routeType="auth"/>
-      {/* <Switch> */}
+      <Switch>
+        <AuthRoute exact path="/" component={Splash} routeType="auth"/>
         <AuthRoute exact path="/onboarding" component={Onboarding} routeType="protected" />
         <AuthRoute exact path="/signup" component={Signup} routeType="auth"/>
         <AuthRoute exact path="/login" component={Login} routeType="auth"/>
         <AuthRoute exact path="/home" component={Home} routeType="protected" />
         <AuthRoute exact path="/dogs/:id" component={DogShow} routeType="protected"  />
-      {/* </Switch> */}
+      </Switch>
+      <AuthRoute exact path="/" component={SplashFooter} routeType="auth"/>
     </div>
   );
 }

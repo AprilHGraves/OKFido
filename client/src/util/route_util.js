@@ -18,6 +18,7 @@ const AuthRoute = ({
         // user is not logged in - useful for authentication routes
         // like login or register
         if (routeType === "auth") {
+          // debugger;
           return (
             <Route
               path={path}
@@ -30,6 +31,7 @@ const AuthRoute = ({
         } else {
           // otherwise this will be a protected route which will only
           // render the component if the user is logged in
+          // debugger;
           return (
             <Route
               
@@ -48,4 +50,4 @@ const AuthRoute = ({
     </Query>
   );
 
-export default AuthRoute;
+export default (AuthRoute);
