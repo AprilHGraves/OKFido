@@ -62,6 +62,7 @@ const dogTransform = (dog) => {
     id: dog.id,
     age: dog.age,
     gender: dog.gender,
+    url: dog.url,
     size: dog.size,
     name: dog.name,
     description: dog.description,
@@ -119,6 +120,8 @@ const getOneDog = async(dogId) => {
   })
   if(desc) {
     dog.description = desc
+  } else {
+    dog.description = "No description provided."
   }
 
   return dog;

@@ -38,7 +38,7 @@ const AuthRoute = ({
                 data._id ? (
                   <Component {...props} />
                 ) : (
-                    <Redirect to="/" />
+                    <Redirect to="/login" />
                   )
               }
             />

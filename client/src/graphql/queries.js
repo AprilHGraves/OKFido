@@ -32,10 +32,17 @@ export default {
       age,
       gender,
       size,
+      url,
       name,
       description,
+      coat,
       photoUrl,
+      breeds {
+        primary
+      }
       contact {
+        email
+        phone
         address {
           address1
           address2
@@ -44,6 +51,11 @@ export default {
           postcode
           country
         }
+      },
+      environment {
+        children,
+        dogs,
+        cats
       }
     }
   }

@@ -33,12 +33,76 @@
         word-wrap: break-word;
       }
       &-contents {
+        position: relative;
         padding: 0 20px 20px;
         color: #2a2f35;
         font-size: 18px;
         word-wrap: break-word;
         white-space: pre-wrap;
+        &--collapsed {
+          max-height: 300px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  &-sidebar {
+    float: right;
+    width: 320px;
+    padding-top: 50px;
+    &-details {
+      padding-bottom: 20px;
+    }
+    &-details-header {
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2a2f35;
+    }
+    &-details-row {
+      padding: 10px 0px;
+      span, div {
+        color: rgb(42, 47, 53);
+        margin-right: 20px;
+        font-size: 16px;
+      }
+      a {
+        color: #104da1;
+        text-decoration: underline;
       }
     }
   }
 }
+
+.dog-show-desc-expander {
+  height: 180px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: left;
+  &--hidden {
+    display: none;
+  }
+  &-bg {
+    background-image: linear-gradient(hsla(0,0%,100%,0),#f3f5f9 80%,#f3f5f9);
+    height: 180px;
+  }
+  &-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    transition: bottom .3s ease;
+    color: #4c7bd9;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
+

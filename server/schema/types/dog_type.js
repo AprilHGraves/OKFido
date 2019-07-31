@@ -11,6 +11,7 @@ const DogType = new GraphQLObjectType({
   // remember we wrap the fields in a thunk to avoid circular dependency issues
   fields: () => ({
     id: { type: GraphQLID },
+    url: { type: GraphQLString },
     age: { type: GraphQLString },
     gender: { type: GraphQLString },
     size: { type: GraphQLString },
