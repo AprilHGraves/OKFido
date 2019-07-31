@@ -1,5 +1,7 @@
 const request = require('request-promise');
 const keys = require('../../config/keys');
+const select = require('cheerio-select');
+const cheerio = require('cheerio')
 
 let _token = null;
 const getToken = async () => {
@@ -103,7 +105,23 @@ const getOneDog = async(dogId) => {
     auth: { bearer: token, sendImmediately: true },
     json: true
   })
-  return dogTransform(result.animal);
+  const dog = dogTransform(result.animal);
+
+  //get html for page to scrape description bc the dumb api cuts it off
+  const pageResult = await request(result.animal.url)
+  const $ = cheerio.load(pageResult);
+
+  let desc = null
+  $("h2").each((idx, el) => {
+    if($(el).text().includes("Meet ")) {
+      desc = $(el).next().text().trim()
+    }
+  })
+  if(desc) {
+    dog.description = desc
+  }
+
+  return dog;
 }
 
 
