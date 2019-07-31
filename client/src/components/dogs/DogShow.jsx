@@ -121,6 +121,12 @@ class DogShow extends React.Component {
                       </span>
                       <div className="dog-show-info-content-sidebar-details-row">
                         <div>
+                          {dog.contact.email}
+                        </div>
+                        <div>
+                          {dog.contact.phone}
+                        </div>
+                        <div>
                           {dog.contact.address.address1} 
                         </div>
                         <div>
@@ -132,6 +138,7 @@ class DogShow extends React.Component {
                         <div>
                           {dog.contact.address.postcode} {dog.contact.address.country}
                         </div>
+                        <a href={dog.url}>Check me out on PetFinder</a>
                       </div>
                     </div>
                   </div>

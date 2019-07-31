@@ -62,6 +62,7 @@ const dogTransform = (dog) => {
     id: dog.id,
     age: dog.age,
     gender: dog.gender,
+    url: dog.url,
     size: dog.size,
     name: dog.name,
     description: dog.description,

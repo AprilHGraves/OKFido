@@ -32,6 +32,7 @@ export default {
       age,
       gender,
       size,
+      url,
       name,
       description,
       coat,
@@ -40,6 +41,8 @@ export default {
         primary
       }
       contact {
+        email
+        phone
         address {
           address1
           address2
