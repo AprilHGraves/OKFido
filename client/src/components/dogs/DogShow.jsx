@@ -42,8 +42,7 @@ class DogShow extends React.Component {
             return <></>
           }
           let dog = data.dog;
-          console.log(dog.breedInfo);
-          
+
           if (dog.description === "No description provided."){
             dogDescClass = "dog-show-desc-contents"
             expandButtonClass = "dog-show-desc-expander--hidden"
@@ -143,6 +142,37 @@ class DogShow extends React.Component {
                         </div>
                         <a href={dog.url}>Check me out on PetFinder</a>
                       </div>
+                    </div>
+                  </div>
+                  <div className="dog-show-info-content-main">
+                    <div className="dog-show-desc">
+                      <div className="dog-show-desc-header">Breed Information</div>
+                      <div className="dog-show-desc-contents">
+                        {dog.breedInfo.bred_for ? (
+                          <div>
+                            <h3>Bred for</h3>
+                            {dog.breedInfo.bred_for}
+                          </div>) : 
+                          (<div></div>) 
+                        }
+
+                        {dog.breedInfo.temperament ? (
+                          <div>
+                            <h3>Temperamnt</h3>
+                            {dog.breedInfo.temperament}
+                          </div>) :
+                          (<div></div>)
+                        }
+
+                        {dog.breedInfo.life_span ? (
+                          <div>
+                            <h3>Life Span</h3>
+                            {dog.breedInfo.life_span}
+                          </div>) :
+                          (<div></div>)
+                        }
+                      </div>
+
                     </div>
                   </div>
                 </div>
