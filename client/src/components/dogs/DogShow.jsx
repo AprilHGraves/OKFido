@@ -15,7 +15,7 @@ class DogShow extends React.Component {
           if (error) return `Error! ${error.message}`;
 
           let dog = data.dog;
-
+          if (!dog) { return <div></div>}
           return (
             <div className="dog-show-container">
               <Nav />

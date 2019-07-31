@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mutation } from 'react-apollo';
+import { Mutation, ApolloConsumer } from 'react-apollo';
 import Mutations from '../../graphql/mutations';
-const { LOGIN_USER } = Mutations;
+const { LOGIN_USER, VERIFY_USER } = Mutations;
 
 class Login extends React.Component {
   constructor(props) {
@@ -69,39 +69,54 @@ class Login extends React.Component {
               </label>
             </div>
           </div>
-          <Mutation
-            mutation={LOGIN_USER}
-            onCompleted={data => {
-              const { token } = data.login;
-              localStorage.setItem("auth-token", token);
-              this.props.history.push("/home");
-            }}
-            onError={err => {
-              setTimeout(() => {
-                this.setState({ message: ""});
-              },3500)
-              this.setState({ message: err.message.slice(15) })
-            }
-            }
-          >
+          <ApolloConsumer>
+            {client => (
 
-            {login => (
-              <button
-                className="blue-bg"
-                onClick={e => {
-                  e.preventDefault();
-                  login({
-                    variables: {
-                      email: this.state.email,
-                      password: this.state.password
-                    }
-                  });
+              <Mutation
+                mutation={LOGIN_USER}
+                onCompleted={data => {
+                  const { token } = data.login;
+                  localStorage.setItem("auth-token", token);
+                  client
+                    .mutate({ mutation: VERIFY_USER, variables: { token } })
+                    .then(({ data }) => {
+                      client.writeData({
+                        data: {
+                          _id: data.verifyUser._id
+                        }
+                      });
+                    });
+                  this.props.history.push("/home");
                 }}
+                onError={err => {
+                  setTimeout(() => {
+                    this.setState({ message: ""});
+                  },3500)
+                  this.setState({ message: err.message.slice(15) })
+                }
+                }
               >
-                SIGN IN
-                </button>
+
+                {login => (
+                  <button
+                    className="blue-bg"
+                    onClick={e => {
+                      e.preventDefault();
+                      login({
+                        variables: {
+                          email: this.state.email,
+                          password: this.state.password
+                        }
+                      });
+                    }}
+                  >
+                    SIGN IN
+                    </button>
+                )}
+              </Mutation>
             )}
-          </Mutation>
+            
+          </ApolloConsumer>
         </div>
       </div>
     )
