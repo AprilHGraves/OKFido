@@ -23,13 +23,17 @@ class DogShowHeader extends React.Component {
               <span className="profile-basics-asl-location">{dog.contact.address.city}, {dog.contact.address.state}</span>
               <span className="profile-basics-asl-spacer">•</span>
               <span className="profile-basics-asl-match">50% Match</span>
-              <Query query={GET_USER_ID}>
-                {({ data }) => {
-                  const userId = data._id;
+              <Query query={GET_USER_ID} variables={{ token: localStorage.getItem("auth-token")}}>
+                {({loading, error, data }) => {
+                  if (loading) return "Loading..."
+                  if (error) return `Error! ${error.message}`
+                  // debugger;
+                  const userId = data.userByToken._id;
+                  // if (!userId) { return <div></div>}
                   return (
                     <Query query={LIKED_DOGS} variables={{ userId: userId }}>
                       {({ data }) => {
-                        if (data.likedDogs && data.likedDogs.dogIds.includes(dog.id)) {
+                        if (data && data.likedDogs && data.likedDogs.dogIds.includes(dog.id)) {
                           return (
                             <Mutation
                               mutation={UNLIKE_DOG}
