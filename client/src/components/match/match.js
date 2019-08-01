@@ -2,8 +2,6 @@ import React from 'react'
 
 class MatchPercent extends React.Component {
   render(){
-    console.log(this.props.dog)
-    console.log(this.props.userPrefs)
 
     let matchedCriteria = {
       hasChildren: false,
@@ -42,7 +40,7 @@ class MatchPercent extends React.Component {
     let numMatches = Object.values(matchedCriteria).filter(val => val).length;
     let percent = Math.floor((numMatches / 6) * 100);
 
-    return `${percent}% Match`;
+    return `${percent}%`;
 
   }
               
