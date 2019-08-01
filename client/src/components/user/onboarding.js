@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { Mutation, Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import Mutations from '../../graphql/mutations';
-const { GET_USER_ID } = Queries;
+const { GET_USER_ID, GET_USER_PREFS } = Queries;
 const { UPDATE_USER } = Mutations;
 
 class Onboarding extends React.Component {
@@ -367,13 +368,13 @@ class Onboarding extends React.Component {
                 <span>This info will be visible to others</span>
               </div>
               {this.state.page === "ages" ? (
-                <Query query={GET_USER_ID}>
-                  {({ data }) => (
-                    
+                <Query query={GET_USER_ID} variables={{token: localStorage.getItem("auth-token")}}>
+                  {({ data }) => {
+                    return (
                     <Mutation
                       mutation={UPDATE_USER}
                       onCompleted={data => {
-                        this.props.history.push("/home");
+                        this.props.history.push('/home')
                       }}
                       onError={err => {
                         console.log(err)
@@ -384,7 +385,7 @@ class Onboarding extends React.Component {
                           className={`button next-btn ${this.state.error ? "gray-bg" : "blue-bg"}`}
                           onClick={e => {
                             e.preventDefault();
-                            const id = data._id;
+                            const id = data.userByToken._id;
                             updateUser({
                               variables: {
                                 id: id,
@@ -398,14 +399,14 @@ class Onboarding extends React.Component {
                                 likedGenders: this.state.genders,
                                 likedAges: this.state.ages
                               }
-                            });
+                            })
                           }}
                         >
                           SUBMIT
                         </button>
                       )}
                     </Mutation>
-                  )}
+                    )}}
                 </Query>
 
               ):(
@@ -439,4 +440,4 @@ class Onboarding extends React.Component {
   }
 }
 
-export default Onboarding
+export default withRouter(Onboarding);
