@@ -18,7 +18,7 @@ class DogShowHeader extends React.Component {
               <span className="profile-basics-asl-location">{dog.contact.address.city}, {dog.contact.address.state}</span>
               <span className="profile-basics-asl-spacer">•</span>
               <span className="profile-basics-asl-match">
-                <MatchPercent />
+                <MatchPercent dog={dog}/>
               </span>
             </div>
           </div>

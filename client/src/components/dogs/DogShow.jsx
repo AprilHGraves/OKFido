@@ -60,6 +60,8 @@ class DogShow extends React.Component {
           let envDogs = "";
           if (dog.environment.dogs) {
             envDogs = "Good with other dogs"
+          } else if (dog.environment.dogs == null) {
+            envDogs = "Unknown if good with other dogs"
           } else {
             envDogs = "Not good with other dogs"
           }
@@ -67,6 +69,8 @@ class DogShow extends React.Component {
           let envCats = "";
           if (dog.environment.cats) {
             envCats = "Good with cats"
+          } else if (dog.environment.cats == null) {
+            envCats = "Unknown if good with cats"
           } else {
             envCats = "Not good with cats"
           }
