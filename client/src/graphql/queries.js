@@ -1,7 +1,13 @@
 import gql from "graphql-tag";
 
 export default {
-  
+  LIKED_DOGS: gql`
+    query LikedDogs($userId: ID!) {
+      likedDogs(userId: $userId) {
+        dogIds
+      }
+    }
+  `,
   GET_USER_ID: gql`
     query IsUserLoggedIn {
       _id @client,

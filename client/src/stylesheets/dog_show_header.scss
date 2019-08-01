@@ -39,7 +39,7 @@
         margin-left: 8px;
         padding: 12px;
         padding-top: 8px;
-        max-width: 390px;
+        // max-width: 390px;
         white-space: nowrap;
         h1 {
           color: #fff;
@@ -57,6 +57,34 @@
             color: #9dbaf2;
             font-size: 15px;
             line-height: 26px;
+          }
+        }
+      }
+      .like-pooch {
+        float: right;
+        width: 155px;
+        height: 30px;
+        background-color: white;
+        cursor: pointer;
+        color: #3260c7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        bottom: 20px;
+        margin-left: 20px;
+        padding: 10px 0;
+        font-weight: 700;
+        font-size: 18px;
+        border-radius: 50px;
+        .fa-star {
+          color: #ffaf0d;
+        }
+        &:hover{
+          color: white;
+          background-color: #ffaf0d;
+          .fa-star {
+            color: white;
           }
         }
       }

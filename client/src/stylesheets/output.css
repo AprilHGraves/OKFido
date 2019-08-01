@@ -405,14 +405,16 @@ input[type=number]::-webkit-outer-spin-button {
   .navigation .nav-right {
     right: 0;
     padding-right: 18px;
-    position: absolute; }
-    .navigation .nav-right .fa-comment, .navigation .nav-right .fa-user {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-top: 15px; }
+    .navigation .nav-right .fa-comment, .navigation .nav-right .fa-user, .navigation .nav-right .fa-star {
       font-size: 35px;
-      line-height: 66px;
       padding-right: 15px;
       cursor: pointer;
       color: #d6e1f9; }
-      .navigation .nav-right .fa-comment:hover, .navigation .nav-right .fa-user:hover {
+      .navigation .nav-right .fa-comment:hover, .navigation .nav-right .fa-user:hover, .navigation .nav-right .fa-star:hover {
         color: white; }
     .navigation .nav-right a {
       position: relative;
@@ -503,7 +505,6 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 8px;
         padding: 12px;
         padding-top: 8px;
-        max-width: 390px;
         white-space: nowrap; }
         .dog-show-info-inner-content .profile-basics h1 {
           color: #fff;
@@ -520,6 +521,30 @@ input[type=number]::-webkit-outer-spin-button {
             color: #9dbaf2;
             font-size: 15px;
             line-height: 26px; }
+      .dog-show-info-inner-content .like-pooch {
+        float: right;
+        width: 155px;
+        height: 30px;
+        background-color: white;
+        cursor: pointer;
+        color: #3260c7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        bottom: 20px;
+        margin-left: 20px;
+        padding: 10px 0;
+        font-weight: 700;
+        font-size: 18px;
+        border-radius: 50px; }
+        .dog-show-info-inner-content .like-pooch .fa-star {
+          color: #ffaf0d; }
+        .dog-show-info-inner-content .like-pooch:hover {
+          color: white;
+          background-color: #ffaf0d; }
+          .dog-show-info-inner-content .like-pooch:hover .fa-star {
+            color: white; }
 
 .dog-show-container {
   background-color: #f3f5f9;
