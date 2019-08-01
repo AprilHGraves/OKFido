@@ -35,9 +35,12 @@
     right: 0;
     padding-right: 18px;
     position: absolute;
-    .fa-comment, .fa-user {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    .fa-comment, .fa-user, .fa-star {
       font-size: 35px;
-      line-height: 66px;
+      // line-height: 66px;
       padding-right: 15px;
       cursor: pointer;
       color: #d6e1f9;

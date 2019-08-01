@@ -4,13 +4,28 @@ const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
 
 const UserType = require("./user_type");
 const DogType = require("./dog_type");
+const LikeType = require("./like_type");
 const Petfinder = require("../../services/petfinder");
 
 const User = mongoose.model("users");
+const Like = mongoose.model("likes");
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
   fields: () => ({
+    likedDogs: {
+      type: LikeType,
+      args: {
+        userId: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return Like.find({ user: args.userId })
+          .then(likes => {
+            const dogIds = likes.map(like => like.dogId );
+            return { dogIds: dogIds }
+          })
+      }
+    },
     users: {
       type: new GraphQLList(UserType),
       resolve() {

@@ -71,7 +71,6 @@ class DogShow extends React.Component {
 
           return (
             <div className="dog-show-container">
-              <Nav />
               <div className=""></div>
               <div className="dog-show-info">
                 <DogShowHeader dog={dog}/>
