@@ -13,6 +13,8 @@ import { setContext } from "apollo-link-context";
 import { HashRouter } from 'react-router-dom';
 
 import Mutations from './graphql/mutations';
+import Queries from './graphql/queries';
+const { GET_USER_ID } = Queries;
 const { VERIFY_USER } = Mutations;
 
 const cache = new InMemoryCache({
@@ -61,7 +63,7 @@ const token = localStorage.getItem("auth-token");
 
 cache.writeData({
   data: {
-    _id: Boolean(token),
+    isLoggedIn: Boolean(token),
   }
 });
 
@@ -71,9 +73,9 @@ if (token) {
     .then(({ data }) => {
       cache.writeData({
         data: {
-          _id: data.verifyUser._id
+          isLoggedIn: data.verifyUser.loggedIn,
         }
-      });
+      })
     });
 };
 

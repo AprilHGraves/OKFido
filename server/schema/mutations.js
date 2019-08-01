@@ -3,7 +3,10 @@ const { GraphQLObjectType, GraphQLBoolean, GraphQLString, GraphQLInt, GraphQLID,
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
 const UserType = require('./types/user_type');
+const Like = mongoose.model("likes");
+const LikeType = require('./types/like_type');
 const AuthService = require("../services/auth");
+const Petfinder = require("../services/petfinder");
 
 const mutation = new GraphQLObjectType({
   name: "Mutation",
@@ -47,6 +50,36 @@ const mutation = new GraphQLObjectType({
         return AuthService.verifyUser(args);
       }
     },
+    likeDog: {
+      type: LikeType,
+      args: {
+        userId: { type: GraphQLID },
+        dogId: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return Petfinder.getOneDog(args.dogId)
+          .then(dog => (
+            User.findById(args.userId)
+              .then(user => {
+                const like = new Like({user: args.userId, dogId: args.dogId });
+                return like.save()
+              })
+          ))
+      }
+    },
+    unlikeDog: {
+      type: LikeType,
+      args: {
+        userId: { type: GraphQLID },
+        dogId: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return Like.find({ user: args.userId, dogId: args.dogId })
+          .then(res => (
+            res[0].delete()
+          ))
+      }
+    },
     updateUser: {
       type: UserType,
       args: {
@@ -73,7 +106,6 @@ const mutation = new GraphQLObjectType({
         likedGenders,
         likedAges
       }) {
-        console.log('hellooooo');
         return User.findOneAndUpdate({ _id },
           {
             username,

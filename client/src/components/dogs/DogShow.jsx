@@ -1,9 +1,9 @@
 import React from 'react'
 import Nav from '../home/nav';
 import Queries from '../../graphql/queries';
-import { Query } from "react-apollo";
+import { Query, withApollo } from "react-apollo";
 import DogShowHeader from './DogShowHeader';
-const { FETCH_ONE_DOG } = Queries;
+const { FETCH_ONE_DOG, GET_USER_ID, GET_USER_PREFS } = Queries;
 
 class DogShow extends React.Component {
 
@@ -11,12 +11,34 @@ class DogShow extends React.Component {
     super(props);
 
     this.state = {
-      descExpanded: false
+      descExpanded: false,
+      loading: true,
+      currentUserPrefs: {}
     }
   }
 
   expandDescription(){
     this.setState({descExpanded: true})
+  }
+
+  componentDidMount() {
+    this.getUser()
+  }
+
+  getUser = async () => {
+    let token = localStorage.getItem("auth-token")
+
+    let userIdQueryResult = await this.props.client.query({
+      query: GET_USER_ID,
+      variables: { token: token }
+    })
+
+    let userPrefsResult = await this.props.client.query({
+      query: GET_USER_PREFS,
+      variables: { id: userIdQueryResult.data.userByToken._id }
+    })
+
+    this.setState({ currentUserPrefs: userPrefsResult.data.user, loading: false })
   }
 
   render() {
@@ -31,6 +53,10 @@ class DogShow extends React.Component {
       this.state.descExpanded ?
       "dog-show-desc-expander--hidden" :
       "dog-show-desc-expander";
+
+    if (this.state.loading){
+      return <></>
+    }
     
     return (
       <Query query={FETCH_ONE_DOG} variables={{ dogId: dogId }}>
@@ -79,7 +105,7 @@ class DogShow extends React.Component {
             <div className="dog-show-container">
               <div className=""></div>
               <div className="dog-show-info">
-                <DogShowHeader dog={dog}/>
+                <DogShowHeader dog={dog} userPrefs={this.state.currentUserPrefs}/>
                 <div className="dog-show-info-content">
                   <div className="dog-show-info-content-main">
                     <div className="dog-show-desc">
@@ -191,4 +217,4 @@ class DogShow extends React.Component {
   }
 }
 
-export default DogShow;
+export default withApollo(DogShow);

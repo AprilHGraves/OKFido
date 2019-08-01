@@ -1,10 +1,23 @@
 import gql from "graphql-tag";
 
 export default {
-  
+  LIKED_DOGS: gql`
+    query LikedDogs($userId: ID!) {
+      likedDogs(userId: $userId) {
+        dogIds
+      }
+    }
+  `,
+  IS_LOGGED_IN: gql`
+    query IsLoggedIn {
+      isLoggedIn @client
+    }
+  `,
   GET_USER_ID: gql`
-    query IsUserLoggedIn {
-      _id @client,
+    query GetUserId($token: String!) {
+      userByToken(token: $token) {
+        _id
+      }
     }
   `,
   GET_USER_PREFS: gql`
@@ -36,6 +49,11 @@ export default {
             city
           }
         }
+        environment {
+          children,
+          dogs,
+          cats
+        },
       }
     }
   `,
