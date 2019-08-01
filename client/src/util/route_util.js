@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
-const { GET_USER_ID } = Queries;
+const { IS_LOGGED_IN } = Queries;
 
 // our route switches on routeType
 const AuthRoute = ({
@@ -12,7 +12,7 @@ const AuthRoute = ({
   routeType,
   ...rest
 }) => (
-    <Query query={GET_USER_ID}>
+    <Query query={IS_LOGGED_IN}>
       {({ data }) => {
         // if the route type is "auth" then this route will only render if the
         // user is not logged in - useful for authentication routes
@@ -23,7 +23,7 @@ const AuthRoute = ({
               path={path}
               exact={exact}
               render={props =>
-                !data._id ? <Component {...props} /> : <Redirect to="/home" />
+                !data.isLoggedIn ? <Component {...props} /> : <Redirect to="/home" />
               }
             />
           );
@@ -35,7 +35,7 @@ const AuthRoute = ({
               
               {...rest}
               render={props =>
-                data._id ? (
+                data.isLoggedIn ? (
                   <Component {...props} />
                 ) : (
                     <Redirect to="/login" />

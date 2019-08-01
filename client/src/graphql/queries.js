@@ -8,9 +8,16 @@ export default {
       }
     }
   `,
+  IS_LOGGED_IN: gql`
+    query IsLoggedIn {
+      isLoggedIn @client
+    }
+  `,
   GET_USER_ID: gql`
-    query IsUserLoggedIn {
-      _id @client,
+    query GetUserId($token: String!) {
+      userByToken(token: $token) {
+        _id
+      }
     }
   `,
   FETCH_SHIBAS: gql`
