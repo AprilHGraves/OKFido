@@ -1,4 +1,5 @@
 import React from 'react'
+import MatchPercent from '../match/match'
 
 class DogShowHeader extends React.Component {
   render(){
@@ -16,7 +17,9 @@ class DogShowHeader extends React.Component {
               <span className="profile-basics-asl-spacer">•</span>
               <span className="profile-basics-asl-location">{dog.contact.address.city}, {dog.contact.address.state}</span>
               <span className="profile-basics-asl-spacer">•</span>
-              <span className="profile-basics-asl-match">50% Match</span>
+              <span className="profile-basics-asl-match">
+                <MatchPercent />
+              </span>
             </div>
           </div>
         </div>

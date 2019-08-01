@@ -7,6 +7,13 @@ export default {
       _id @client,
     }
   `,
+  GET_USER_PREFS: gql`
+    query getUser ($id: ID!){
+      user(_id: $id) {
+        email
+      }
+    }
+  `,
   FETCH_SHIBAS: gql`
     query FetchDogs {
       dogs {

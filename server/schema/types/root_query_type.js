@@ -33,7 +33,6 @@ const RootQueryType = new GraphQLObjectType({
     },
     dogs: {
       type: new GraphQLList(DogType),
-      // args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(_, args) {
         return Petfinder.getShibas();
       }
