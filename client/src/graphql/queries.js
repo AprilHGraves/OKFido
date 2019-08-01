@@ -18,8 +18,6 @@ export default {
         likedSizes
         likedGenders
         likedAges
-        likedColors
-        coat
       }
     }
   `,

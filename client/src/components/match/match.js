@@ -8,14 +8,13 @@ const MatchPercent = (props) => {
       <ApolloConsumer>
         {client => {
           let {_id} = client.readQuery({ query: GET_USER_ID })
-          console.log(_id)
           return (
             <Query query={GET_USER_PREFS} variables={{ id: _id }}>
               {({ loading, error, data }) => {
                 if (loading) return "Loading...";
                 if (error) return `Error! ${error.message}`;
 
-                console.log(data.user)
+                console.log(props.userPrefs)
                 console.log(props.dog)
                 // size, gender, age
                 let matchedCriteria = {
