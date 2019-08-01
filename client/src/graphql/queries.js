@@ -20,6 +20,20 @@ export default {
       }
     }
   `,
+  GET_USER_PREFS: gql`
+    query getUser ($id: ID!){
+      user(_id: $id) {
+        zipcode
+        willTravel
+        hasChildren
+        hasDogs
+        hasCats
+        likedSizes
+        likedGenders
+        likedAges
+      }
+    }
+  `,
   FETCH_SHIBAS: gql`
     query FetchDogs {
       dogs {
@@ -35,6 +49,11 @@ export default {
             city
           }
         }
+        environment {
+          children,
+          dogs,
+          cats
+        },
       }
     }
   `,

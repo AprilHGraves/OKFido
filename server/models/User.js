@@ -38,10 +38,6 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false
   },
-  likedBreeds: {
-    type: Array,
-    default: ['all']
-  },
   likedSizes: {
     type: Array,
     default: ['small', 'medium', 'large', 'xlarge']
@@ -54,30 +50,6 @@ const UserSchema = new Schema({
     type: Array,
     default: ['baby', 'young', 'adult', 'senior']
   },
-  likedColors: {
-    type: Array,
-    default: [
-      "Apricot / Beige",
-      "Bicolor",
-      "Black",
-      "Brindle",
-      "Brown / Chocolate",
-      "Golden",
-      "Gray / Blue / Silver",
-      "Harlequin",
-      "Merle (Blue)",
-      "Merle (Red)",
-      "Red / Chestnut / Orange",
-      "Sable",
-      "Tricolor (Brown, Black, & White)",
-      "White / Cream",
-      "Yellow / Tan / Blond / Fawn"
-    ]
-  },
-  coat: {
-    type: Array,
-    default: ['short', 'medium', 'long', 'wire', 'hairless', 'curly']
-  }
 });
 
 module.exports = mongoose.model("users", UserSchema);

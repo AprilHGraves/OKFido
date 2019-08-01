@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import MatchPercent from '../match/match'
 
 class DogIndexItem extends React.Component {
 
@@ -12,6 +13,9 @@ class DogIndexItem extends React.Component {
           <div className="dog-index-item-info">
             <h3>{dog.name}, {dog.age}</h3>
             <h4>{dog.contact.address.city}</h4>
+            <div className="dog-index-item-match">
+              <MatchPercent dog={dog} userPrefs={this.props.userPrefs}/>
+            </div>
           </div>
         </li>
       </Link>

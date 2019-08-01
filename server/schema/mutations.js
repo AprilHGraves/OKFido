@@ -106,7 +106,6 @@ const mutation = new GraphQLObjectType({
         likedGenders,
         likedAges
       }) {
-        console.log('hellooooo');
         return User.findOneAndUpdate({ _id },
           {
             username,
