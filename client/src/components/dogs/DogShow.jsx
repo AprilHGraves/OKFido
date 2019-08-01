@@ -105,7 +105,9 @@ class DogShow extends React.Component {
                       </span>
                       <div className="dog-show-info-content-sidebar-details-row">
                         <span role="img" aria-label="target">🎯</span>
-                        <span>{dog.gender}, {dog.size}, {dog.coat} coat</span>
+                        {dog.coat ? (<span>{dog.gender}, {dog.size}, {dog.coat} coat</span>) 
+                          : (<span>{dog.gender}, {dog.size}</span>)}
+                        
                       </div>
                       <div className="dog-show-info-content-sidebar-details-row">
                         <span role="img" aria-label="child">🧒</span>

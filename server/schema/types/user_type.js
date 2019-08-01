@@ -18,8 +18,6 @@ const UserType = new GraphQLObjectType({
     likedSizes: { type: new GraphQLList(GraphQLString) },
     likedGenders: { type: new GraphQLList(GraphQLString) },
     likedAges: { type: new GraphQLList(GraphQLString) },
-    likedColors: { type: new GraphQLList(GraphQLString) },
-    coat: { type: new GraphQLList(GraphQLString) },
     token: { type: GraphQLString },
     loggedIn: { type: GraphQLBoolean }
   })
