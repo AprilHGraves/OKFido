@@ -29,21 +29,20 @@ class DogShowHeader extends React.Component {
                   return (
                     <Query query={LIKED_DOGS} variables={{ userId: userId }}>
                       {({ data }) => {
-                        debugger;
                         if (data.likedDogs && data.likedDogs.dogIds.includes(dog.id)) {
                           return (
                             <Mutation
                               mutation={UNLIKE_DOG}
+                              onError={() => alert("stop spamming the button. thanks.")}
                               update={(cache, { data: { unlikeDog } }) => {
                                 const res = cache.readQuery({
                                   query: LIKED_DOGS,
                                   variables: { userId: userId }
                                 });
-                                const dogs = res.likedDogs.dogIds;
+                                const dogs = res.likedDogs.dogIds.slice(0);
 
                                 const removeId = dogs.indexOf(dog.id);
                                 dogs.splice(removeId, 1);
-
                                 cache.writeQuery({
                                   query: LIKED_DOGS,
                                   variables: { userId: userId },
@@ -60,6 +59,13 @@ class DogShowHeader extends React.Component {
                                       variables: {
                                         userId: userId,
                                         dogId: dog.id
+                                      },
+                                      optimisticResponse: {
+                                        __typename: "Mutation",
+                                        unlikeDog: {
+                                          _id: "a",
+                                          __typename: "LikeType"
+                                        }
                                       }
                                     })
                                   }}
@@ -79,7 +85,7 @@ class DogShowHeader extends React.Component {
                                   query: LIKED_DOGS,
                                   variables: { userId: userId }
                                 });
-                                const dogs = res.likedDogs.dogIds;
+                                const dogs = res.likedDogs.dogIds.slice(0);
 
                                 dogs.push(dog.id);
 
@@ -99,6 +105,13 @@ class DogShowHeader extends React.Component {
                                       variables: {
                                         userId: userId,
                                         dogId: dog.id
+                                      },
+                                      optimisticResponse: {
+                                        __typename: "Mutation",
+                                        likeDog: {
+                                          _id: "a",
+                                          __typename: "LikeType"
+                                        }
                                       }
                                     })
                                   }}
