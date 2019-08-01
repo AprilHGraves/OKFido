@@ -64,6 +64,14 @@ export default {
         likedAges: $likedAges
       ) {
         _id
+        zipcode
+        willTravel
+        hasChildren
+        hasDogs
+        hasCats
+        likedSizes
+        likedGenders
+        likedAges
       }
     }
 

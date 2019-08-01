@@ -23,6 +23,7 @@ export default {
   GET_USER_PREFS: gql`
     query getUser ($id: ID!){
       user(_id: $id) {
+        _id
         zipcode
         willTravel
         hasChildren

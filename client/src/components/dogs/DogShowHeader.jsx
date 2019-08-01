@@ -30,9 +30,7 @@ class DogShowHeader extends React.Component {
                 {({loading, error, data }) => {
                   if (loading) return "Loading..."
                   if (error) return `Error! ${error.message}`
-                  // debugger;
                   const userId = data.userByToken._id;
-                  // if (!userId) { return <div></div>}
                   return (
                     <Query query={LIKED_DOGS} variables={{ userId: userId }}>
                       {({ data }) => {
