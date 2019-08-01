@@ -82,7 +82,7 @@ class Login extends React.Component {
                     .then(({ data }) => {
                       client.writeData({
                         data: {
-                          _id: data.verifyUser._id
+                          isLoggedIn: true
                         }
                       });
                     });

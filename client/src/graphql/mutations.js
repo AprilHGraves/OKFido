@@ -26,7 +26,7 @@ export default {
   VERIFY_USER: gql`
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
-        _id
+        loggedIn
       }
     }
   `,

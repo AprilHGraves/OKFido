@@ -16,8 +16,12 @@ class Nav extends React.Component {
   }
 
   componentDidUpdate() {
-    if (!this.inside) {
-      this.inside = document.getElementById("user-dropdown");
+    if (!this.inside && this.state.showNav) {
+      setTimeout(() => { this.inside = document.getElementById("user-dropdown")}, 100);
+      document.addEventListener("mousedown", this.handleClickOutside);
+    } else if (this.inside && !this.state.showNav) {
+      this.inside = undefined;
+      document.removeEventListener("mousedown", this.handleClickOutside);
     }
   }
 
@@ -27,26 +31,21 @@ class Nav extends React.Component {
 
   handleClickOutside(event) {
     if (this.inside && !this.inside.contains(event.target) && event.target.id !== 'user-pic') {
-      document.removeEventListener("mousedown", this.handleClickOutside);
-      this.inside = undefined;
       this.setState({ showNav: false });
     }
   }
 
   goToPage(page) {
     return (event) => {
-      this.toggleUserDropdown();
+      this.setState({ showNav: false });
       this.props.history.push(page);
     }
   }
 
   toggleUserDropdown(event) {
     if (this.state.showNav) {
-      document.removeEventListener("mousedown", this.handleClickOutside);
-      this.inside = undefined;
       this.setState({ showNav: false });
-    } else {
-      document.addEventListener("mousedown", this.handleClickOutside);
+    } else {      
       this.setState({ showNav: true });
     }
   }
@@ -76,36 +75,40 @@ class Nav extends React.Component {
         {this.state.showNav && (
           <ApolloConsumer>
             {client => (
-              <Query query={GET_USER_ID}>
-                {({ data }) => (
-                  <ul
-                    id="user-dropdown"
-                  >
-                    <li
-                      className="user-dropdown-lis"
-                      onClick={this.goToPage(`/users/${data._id}`)}
+              <Query query={GET_USER_ID} variables={{ token: localStorage.getItem("auth-token") }}>
+                {({ loading, error, data }) => {
+                  if (loading) return "Loading..."
+                  if (error) return `Error! ${error.message}`
+                  return (
+                    <ul
+                      id="user-dropdown"
                     >
-                      Profile
-                    </li>
-                    <li
-                      className="user-dropdown-lis"
-                      onClick={this.goToPage("/bookmarks")}
-                    >
-                      Bookmarks
-                    </li>
-                    <li
-                      className="user-dropdown-lis"
-                      onClick={e => {
-                        e.preventDefault();
-                        localStorage.removeItem("auth-token");
-                        client.writeData({ data: { _id: "" } });
-                        this.props.history.push("/");
-                      }}
-                    >
-                      Sign Out
-                    </li>
-                  </ul>
-                )}
+                      <li
+                        className="user-dropdown-lis"
+                        onClick={this.goToPage(`/users/${data.userByToken._id}`)}
+                      >
+                        Profile
+                      </li>
+                      <li
+                        className="user-dropdown-lis"
+                        onClick={this.goToPage("/bookmarks")}
+                      >
+                        Bookmarks
+                      </li>
+                      <li
+                        className="user-dropdown-lis"
+                        onClick={e => {
+                          e.preventDefault();
+                          localStorage.removeItem("auth-token");
+                          client.writeData({ data: { isLoggedIn: false } });
+                          this.props.history.push("/");
+                        }}
+                      >
+                        Sign Out
+                      </li>
+                    </ul>
+                  )
+                }}
               </Query>
             )}
           </ApolloConsumer>
