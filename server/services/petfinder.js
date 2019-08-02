@@ -68,7 +68,7 @@ const dogListTransform = (dogs) => {
   return dogs.filter(dog => dog.photoUrl);
 }
 
-const searchByDistAndLoc = async (location, distance) => {
+const searchByDistAndLoc = async (distance, location) => {
   const token = await getToken();
 
   // sanitize user input

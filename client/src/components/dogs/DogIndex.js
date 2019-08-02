@@ -1,12 +1,12 @@
 import Queries from '../../graphql/queries';
 import React from 'react';
-import { Query } from "react-apollo";
+import { Query, withApollo } from "react-apollo";
 import DogIndexItem from './DogIndexItem';
-const { FETCH_SHIBAS } = Queries;
+const { FETCH_DOGS_BASED_DIST_LOC } = Queries;
 
 const DogIndex = () => {
   return (
-    <Query query={FETCH_SHIBAS}>
+    <Query query={FETCH_DOGS_BASED_DIST_LOC} variables={{}}>
       {({ loading, error, data }) => {
         if (loading) return "Loading...";
         if (error) return `Error! ${error.message}`;
@@ -26,4 +26,4 @@ const DogIndex = () => {
   );
 }
 
-export default DogIndex;
+export default withApollo(DogIndex);

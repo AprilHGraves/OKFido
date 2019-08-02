@@ -59,11 +59,11 @@ const RootQueryType = new GraphQLObjectType({
     },
     dogs: {
       type: new GraphQLList(DogType),
-      // args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+      args: { distance: { type: GraphQLString }, location: { type: GraphQLString} },
       resolve(_, args) {
-        return Petfinder.getShibas();
+        return Petfinder.searchByDistAndLoc(args.distance, args.location);
       }
-    }
+    },
   })
 });
 

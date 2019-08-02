@@ -20,7 +20,7 @@ export default {
       }
     }
   `,
-  FETCH_SHIBAS: gql`
+  FETCH_DOGS_BASED_DIST_LOC: gql`
     query FetchDogs {
       dogs {
         id,
