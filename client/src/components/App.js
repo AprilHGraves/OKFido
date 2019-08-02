@@ -9,6 +9,7 @@ import AuthRoute from '../util/route_util';
 import Home from './home/home'
 import DogShow from './dogs/DogShow';
 import Nav from './home/nav';
+import LikedDogs from './dogs/LikedDogs';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <AuthRoute exact path="/signup" component={Signup} routeType="auth"/>
         <AuthRoute exact path="/login" component={Login} routeType="auth"/>
         <AuthRoute exact path="/home" component={Home} routeType="protected" />
+        <AuthRoute exact path="/likes" component={LikedDogs} routeType="protected" />
         <AuthRoute exact path="/dogs/:id" component={DogShow} routeType="protected"  />
       </Switch>
       <AuthRoute exact path="/" component={SplashFooter} routeType="auth"/>
