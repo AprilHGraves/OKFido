@@ -39,6 +39,22 @@
     font-size: 14px;
     line-height: 12px;
     margin: 10px auto;
+    &-green{
+      padding: 6px;
+      text-align: center;
+      color: white;
+      background-color: #00d280;
+      border: 1px solid #00d280;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 26px;
+      width: 41px;
+      border-radius: 13px;
+      font-size: 14px;
+      line-height: 12px;
+      margin: 10px auto;
+    }
   }
   &-thumb{
     top: -20px;

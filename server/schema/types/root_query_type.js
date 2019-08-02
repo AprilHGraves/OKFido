@@ -20,7 +20,6 @@ const RootQueryType = new GraphQLObjectType({
         token: { type: GraphQLString }
       },
       resolve(_, args) {
-        console.log(args.token)
         return AuthService.verifyUser(args);
       }
     },
