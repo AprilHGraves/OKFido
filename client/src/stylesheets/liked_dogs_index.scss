@@ -11,7 +11,8 @@
 }
 
 .liked-dogs {
-  margin: 100px 200px;
+  margin: 100px auto;
+  width: 535px;
 }
 
 .liked-dog {
@@ -19,7 +20,6 @@
   box-shadow: 0 1px 2px rgba(0,0,0,.1);
   display: flex;
   align-items: center;
-  width: 535px;
   height: 90px;
   padding: 15px;
   margin-bottom: 20px;
