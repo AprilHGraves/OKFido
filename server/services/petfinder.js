@@ -35,7 +35,7 @@ const getToken = async () => {
 }
 
 // create a cache so we don't hit the petfinder api so many times if we already
-// have the data
+// have the data for that one dog
 const dogCache = {};
 
 //shape dog data
@@ -68,16 +68,16 @@ const dogListTransform = (dogs) => {
   return dogs.filter(dog => dog.photoUrl);
 }
 
-const searchByDistAndLoc = async (breed, dist) => {
+const searchByDistAndLoc = async (location, distance) => {
   const token = await getToken();
 
   // sanitize user input
-  breed = encodeURIComponent(breed);
   location = encodeURIComponent(location);
+  distance = encodeURIComponent(distance);
 
   const result = await request({
     method: 'GET',
-    url: `https://api.petfinder.com/v2/animals?type=dog&location=${location}&distance=${dist}`,
+    url: `https://api.petfinder.com/v2/animals?type=dog&location=${location}&distance=${distance}`,
     auth: { bearer: token, sendImmediately: true },
     json: true
   })
