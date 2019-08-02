@@ -396,7 +396,8 @@ input[type=number]::-webkit-outer-spin-button {
     .navigation .nav-left a {
       position: relative;
       color: #d6e1f9;
-      vertical-align: sub; }
+      vertical-align: sub;
+      padding-right: 20px; }
       .navigation .nav-left a:hover {
         color: white; }
     .navigation .nav-left .fa-dog {
