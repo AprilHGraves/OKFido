@@ -1,4 +1,5 @@
 import React from 'react'
+import MatchPercent from '../match/match'
 import { Query, Mutation } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import Mutations from '../../graphql/mutations';
@@ -22,14 +23,14 @@ class DogShowHeader extends React.Component {
               <span className="profile-basics-asl-spacer">•</span>
               <span className="profile-basics-asl-location">{dog.contact.address.city}, {dog.contact.address.state}</span>
               <span className="profile-basics-asl-spacer">•</span>
-              <span className="profile-basics-asl-match">50% Match</span>
+              <span className="profile-basics-asl-match">
+              </span>
+              <MatchPercent dog={dog} userPrefs={this.props.userPrefs}/><span> Match</span>
               <Query query={GET_USER_ID} variables={{ token: localStorage.getItem("auth-token")}}>
                 {({loading, error, data }) => {
                   if (loading) return "Loading..."
                   if (error) return `Error! ${error.message}`
-                  // debugger;
                   const userId = data.userByToken._id;
-                  // if (!userId) { return <div></div>}
                   return (
                     <Query query={LIKED_DOGS} variables={{ userId: userId }}>
                       {({ data }) => {
