@@ -39,8 +39,8 @@ class MatchPercent extends React.Component {
     })
     let numMatches = Object.values(matchedCriteria).filter(val => val).length;
     let percent = Math.floor((numMatches / 6) * 100);
-
-    return (<span>{percent}%</span>)
+    let colorClass = percent > 80 ? "dog-index-item-match-green" : "dog-index-item-match";
+    return (<span className={colorClass}>{percent}%</span>)
 
   }
               
