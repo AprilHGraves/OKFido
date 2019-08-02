@@ -36,8 +36,8 @@ export default {
     }
   `,
   FETCH_DOGS_BASED_DIST_LOC: gql`
-    query FetchDogs {
-      dogs {
+    query FetchDogs($distance: String!, $location: String!) {
+      dogs(distance: $distance, location: $location) {
         id,
         age,
         gender,

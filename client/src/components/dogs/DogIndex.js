@@ -2,7 +2,7 @@ import Queries from '../../graphql/queries';
 import React from 'react';
 import { Query, withApollo } from "react-apollo";
 import DogIndexItem from './DogIndexItem';
-const { FETCH_SHIBAS, GET_USER_ID, GET_USER_PREFS } = Queries;
+const { FETCH_DOGS_BASED_DIST_LOC, GET_USER_ID, GET_USER_PREFS } = Queries;
 
 class DogIndex extends React.Component {
   constructor(props){
@@ -38,8 +38,13 @@ class DogIndex extends React.Component {
     if (this.state.loading){
       return <></>
     }
+    let distance = this.state.currentUserPrefs.willTravel;
+    let location = this.state.currentUserPrefs.zipcode.toString();
+
     return (
-      <Query query={FETCH_SHIBAS}>
+      <Query 
+        query={FETCH_DOGS_BASED_DIST_LOC} 
+        variables={{ distance, location }}>
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;

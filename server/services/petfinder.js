@@ -77,7 +77,7 @@ const searchByDistAndLoc = async (distance, location) => {
 
   const result = await request({
     method: 'GET',
-    url: `https://api.petfinder.com/v2/animals?type=dog&location=${location}&distance=${distance}`,
+    url: `https://api.petfinder.com/v2/animals?type=dog&location=${location}&distance=${distance}&limit=50`,
     auth: { bearer: token, sendImmediately: true },
     json: true
   })
