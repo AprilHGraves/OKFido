@@ -3,6 +3,7 @@ const keys = require('../../config/keys');
 const select = require('cheerio-select');
 const cheerio = require('cheerio')
 
+//the token expires every hour, so this grabs a new one
 let _token = null;
 const getToken = async () => {
   if (_token){
@@ -33,25 +34,9 @@ const getToken = async () => {
   }
 }
 
-// const searchByBreedAndLoc = async(breed, location) => {
-//   const token = await getToken();
-
-//   // sanitize user input
-//   breed = encodeURIComponent(breed);
-//   location = encodeURIComponent(location);
-
-//   const result = await request({
-//     method: 'GET',
-//     url: `https://api.petfinder.com/v2/animals?type=dog&location=${location}&breed=${breed}`,
-//     auth: { bearer: token, sendImmediately: true },
-//     json: true
-//   })
-
-//   return result;
-// }
-
+// create a cache so we don't hit the petfinder api so many times if we already
+// have the data
 const dogCache = {};
-
 
 //shape dog data
 const dogTransform = (dog) => {
@@ -81,6 +66,23 @@ const dogTransform = (dog) => {
 const dogListTransform = (dogs) => {
   dogs = dogs.map(dogTransform);
   return dogs.filter(dog => dog.photoUrl);
+}
+
+const searchByDistAndLoc = async (breed, dist) => {
+  const token = await getToken();
+
+  // sanitize user input
+  breed = encodeURIComponent(breed);
+  location = encodeURIComponent(location);
+
+  const result = await request({
+    method: 'GET',
+    url: `https://api.petfinder.com/v2/animals?type=dog&location=${location}&distance=${dist}`,
+    auth: { bearer: token, sendImmediately: true },
+    json: true
+  })
+
+  return dogListTransform(result.animals);
 }
 
 const getShibas = async () => {
@@ -151,4 +153,4 @@ const getOneDog = async(dogId) => {
 }
 
 
-module.exports = { getShibas, getOneDog }
+module.exports = { getShibas, getOneDog, searchByDistAndLoc }
