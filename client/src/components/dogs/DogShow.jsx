@@ -179,7 +179,8 @@ class DogShow extends React.Component {
                     <div className="dog-show-desc">
                       <div className="dog-show-desc-header">Breed Information</div>
                       <div className="dog-show-desc-contents">
-                        {dog.breedInfo.bred_for ? (
+                        {!dog.breedInfo ? "No breed information" : ""}
+                        {dog.breedInfo && dog.breedInfo.bred_for ? (
                           <div>
                             <h3>Bred for</h3>
                             {dog.breedInfo.bred_for}
@@ -187,7 +188,7 @@ class DogShow extends React.Component {
                           (<div></div>) 
                         }
 
-                        {dog.breedInfo.temperament ? (
+                        {dog.breedInfo && dog.breedInfo.temperament ? (
                           <div>
                             <h3>Temperamnt</h3>
                             {dog.breedInfo.temperament}
@@ -195,7 +196,7 @@ class DogShow extends React.Component {
                           (<div></div>)
                         }
 
-                        {dog.breedInfo.life_span ? (
+                        {dog.breedInfo && dog.breedInfo.life_span ? (
                           <div>
                             <h3>Life Span</h3>
                             {dog.breedInfo.life_span}

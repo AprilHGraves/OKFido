@@ -68,6 +68,11 @@ const dogListTransform = (dogs) => {
   return dogs.filter(dog => dog.photoUrl);
 }
 
+const userSearch = async (args) => {
+  // check which args have values, use that to compose the url for the
+  // get request
+}
+
 const searchByDistAndLoc = async (distance, location) => {
   const token = await getToken();
 

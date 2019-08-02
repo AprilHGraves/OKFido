@@ -57,7 +57,8 @@ class Nav extends React.Component {
           <Link to="/">
             <i className="fas fa-dog"></i>
           </Link>
-          <Link to='/browse'>Browse Matches</Link>
+          <Link to='/home'>Browse Matches</Link>
+          <Link to='/search'>Search</Link>
         </div>
         <div className="nav-right">
           <Link to="/likes">
