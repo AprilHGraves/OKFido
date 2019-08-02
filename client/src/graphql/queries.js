@@ -35,6 +35,11 @@ export default {
             city
           }
         }
+        environment {
+          children,
+          dogs,
+          cats
+        },
       }
     }
   `,

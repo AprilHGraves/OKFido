@@ -423,12 +423,6 @@ input[type=number]::-webkit-outer-spin-button {
       .navigation .nav-right a:hover {
         color: white; }
 
-.hidden {
-  display: none; }
-
-.show-hidden {
-  display: block; }
-
 #user-dropdown {
   position: absolute;
   z-index: 2;
@@ -660,9 +654,39 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: center;
   border-radius: 4px;
   width: 180px;
-  padding: 20px; }
+  padding: 10px;
+  height: 280px; }
   .dog-index-item:hover .dog-index-item-thumb {
     transform: scale(1.05); }
+  .dog-index-item-match {
+    padding: 6px;
+    text-align: center;
+    color: #3260c7;
+    border: 1px solid #3260c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 26px;
+    width: 41px;
+    border-radius: 13px;
+    font-size: 14px;
+    line-height: 12px;
+    margin: 10px auto; }
+    .dog-index-item-match-green {
+      padding: 6px;
+      text-align: center;
+      color: white;
+      background-color: #00d280;
+      border: 1px solid #00d280;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 26px;
+      width: 41px;
+      border-radius: 13px;
+      font-size: 14px;
+      line-height: 12px;
+      margin: 10px auto; }
   .dog-index-item-thumb {
     top: -20px;
     margin-bottom: -20px;
@@ -866,5 +890,45 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #fff;
     color: #2a2f35;
     border-radius: 3px; }
+
+.sub-nav {
+  background-color: #104da1;
+  box-sizing: border-box;
+  height: 150px;
+  padding: 50px 0 0 60px; }
+  .sub-nav h1 {
+    color: white;
+    font-size: 35px;
+    font-weight: 400; }
+
+.liked-dogs {
+  margin: 100px auto;
+  width: 535px; }
+
+.liked-dog {
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  height: 90px;
+  padding: 15px;
+  margin-bottom: 20px; }
+
+.liked-dog-pic {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px; }
+
+.liked-dog-line-1 {
+  color: #1e1e1e;
+  margin-bottom: 10px;
+  font-weight: 700; }
+
+.liked-dog-line-2 {
+  color: #56585c;
+  font-size: 14px; }
 
 /*# sourceMappingURL=output.css.map */
