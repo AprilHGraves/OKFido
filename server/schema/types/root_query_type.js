@@ -5,15 +5,28 @@ const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString
 const UserType = require("./user_type");
 const DogType = require("./dog_type");
 const LikeType = require("./like_type");
+const ConversationType = require("./conversation_type");
+const MessageType = require("./message_type");
 const Petfinder = require("../../services/petfinder");
 const AuthService = require("../../services/auth");
 
 const User = mongoose.model("users");
 const Like = mongoose.model("likes");
+const Conversation = mongoose.model("conversations");
+const Message = mongoose.model("messages");
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
   fields: () => ({
+    conversationsByUser: {
+      type: ConversationType,
+      args: {
+        userId: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return Conversation.find({ user: args.userId })
+      }
+    },
     userByToken: {
       type: UserType,
       args: {

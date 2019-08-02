@@ -60,8 +60,11 @@
           }
         }
       }
-      .like-pooch {
+      .header-buttons {
         float: right;
+        display: flex;
+      }
+      .like-pooch, .msg-pooch {
         width: 155px;
         height: 30px;
         background-color: white;
@@ -80,12 +83,12 @@
         .fa-star {
           color: #ffaf0d;
         }
-        &:hover{
+      }
+      .like-pooch:hover{
+        color: white;
+        background-color: #ffaf0d;
+        .fa-star {
           color: white;
-          background-color: #ffaf0d;
-          .fa-star {
-            color: white;
-          }
         }
       }
     }

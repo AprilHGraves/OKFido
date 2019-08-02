@@ -1,6 +1,13 @@
 import gql from "graphql-tag";
 
 export default {
+  FETCH_CONVERSATIONS: gql`
+    query fetchConversations($userId: ID!) {
+      conversationsByUser(userId: $userId) {
+        conversations
+      }
+    }
+  `,
   LIKED_DOGS: gql`
     query LikedDogs($userId: ID!) {
       likedDogs(userId: $userId) {

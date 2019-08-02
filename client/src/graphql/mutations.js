@@ -1,6 +1,20 @@
 import gql from "graphql-tag";
 
 export default {
+  CREATE_CONVERSATION: gql`
+    mutation CreateConversation($userId: ID!, $dogId: ID!) {
+      createConversation(user: $userId, dogId: $dogId) {
+        _id
+      }
+    }
+  `,
+  CREATE_MESSAGE: gql`
+    mutation CreateMessage($body: String!, $conversation: ID!, $author: String!) {
+      createMessage(body: $body, conversation: $conversation, author: $author) {
+        _id
+      }
+    }
+  `,
   LIKE_DOG: gql`
     mutation LikeDog($userId: ID!, $dogId: ID!) {
       likeDog(userId: $userId, dogId: $dogId) {

@@ -7,7 +7,7 @@ const LikeSchema = new Schema({
     ref: "users"
   },
   dogId: {
-    type: Number,
+    type: String,
     required: true
   }
 });

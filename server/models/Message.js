@@ -6,12 +6,12 @@ const MessageSchema = new Schema({
     type: String,
     required: true
   },
-  user: {
+  conversation: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: "conversations"
   },
-  dogId: {
-    type: Integer,
+  author: {
+    type: String,
     required: true
   },
   createdAt: {

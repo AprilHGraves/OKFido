@@ -515,8 +515,10 @@ input[type=number]::-webkit-outer-spin-button {
             color: #9dbaf2;
             font-size: 15px;
             line-height: 26px; }
-      .dog-show-info-inner-content .like-pooch {
+      .dog-show-info-inner-content .header-buttons {
         float: right;
+        display: flex; }
+      .dog-show-info-inner-content .like-pooch, .dog-show-info-inner-content .msg-pooch {
         width: 155px;
         height: 30px;
         background-color: white;
@@ -532,13 +534,13 @@ input[type=number]::-webkit-outer-spin-button {
         font-weight: 700;
         font-size: 18px;
         border-radius: 50px; }
-        .dog-show-info-inner-content .like-pooch .fa-star {
+        .dog-show-info-inner-content .like-pooch .fa-star, .dog-show-info-inner-content .msg-pooch .fa-star {
           color: #ffaf0d; }
-        .dog-show-info-inner-content .like-pooch:hover {
-          color: white;
-          background-color: #ffaf0d; }
-          .dog-show-info-inner-content .like-pooch:hover .fa-star {
-            color: white; }
+      .dog-show-info-inner-content .like-pooch:hover {
+        color: white;
+        background-color: #ffaf0d; }
+        .dog-show-info-inner-content .like-pooch:hover .fa-star {
+          color: white; }
 
 .dog-show-container {
   background-color: #f3f5f9;
