@@ -40,7 +40,7 @@ class MatchPercent extends React.Component {
     let numMatches = Object.values(matchedCriteria).filter(val => val).length;
     let percent = Math.floor((numMatches / 6) * 100);
 
-    return `${percent}%`;
+    return (<span>{percent}%</span>)
 
   }
               
