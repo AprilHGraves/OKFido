@@ -2,7 +2,7 @@ import React from 'react';
 import { Query } from "react-apollo";
 import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries';
-const { LIKED_DOGS, GET_USER_ID, FETCH_ONE_DOG } = Queries;
+const { LIKED_DOGS, GET_USER, FETCH_ONE_DOG } = Queries;
 
 const LikedDogs = () => {
   return (
@@ -10,7 +10,7 @@ const LikedDogs = () => {
       <div className="sub-nav">
         <h1>Likes</h1>
       </div>
-      <Query query={GET_USER_ID} variables={{ token: localStorage.getItem("auth-token") }}>
+      <Query query={GET_USER} variables={{ token: localStorage.getItem("auth-token") }}>
         {({ loading, error, data }) => {
           if (loading) return "Loading..."
           if (error) return `Error! ${error.message}`

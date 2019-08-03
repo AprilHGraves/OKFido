@@ -1,9 +1,9 @@
 import React from 'react'
 import MatchPercent from '../match/match'
-import { Query, Mutation } from 'react-apollo';
+import { Query, Mutation, ApolloConsumer } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import Mutations from '../../graphql/mutations';
-const { GET_USER_ID, LIKED_DOGS } = Queries;
+const { GET_USER, LIKED_DOGS, FETCH_CONVERSATION, ACTIVE_CONVERSATIONS, CONVERSATION_FOCUS } = Queries;
 const { LIKE_DOG, UNLIKE_DOG } = Mutations;
 
 class DogShowHeader extends React.Component {
@@ -123,22 +123,50 @@ class DogShowHeader extends React.Component {
               <span className="profile-basics-asl-match">
               </span>
               <MatchPercent dog={dog} userPrefs={this.props.userPrefs}/><span> Match</span>
-              <Query query={GET_USER_ID} variables={{ token: localStorage.getItem("auth-token")}}>
+              <Query query={GET_USER} variables={{ token: localStorage.getItem("auth-token")}}>
                 {({loading, error, data }) => {
                   if (loading) return "Loading..."
                   if (error) return `Error! ${error.message}`
                   const userId = data.userByToken._id;
                   return (
                     <div className="header-buttons">
-                      <button
-                        className="msg-pooch"
-                        onClick={e => {
-                          e.preventDefault();
-                        }}
-                      >
-                        <i className="fas fa-comment" />&nbsp;
-                        MESSAGE
-                      </button>
+                      
+                      <ApolloConsumer>
+                        {client => (
+                          <button
+                            className="msg-pooch"
+                            onClick={e => {
+                              e.preventDefault();
+                              client
+                                .query({
+                                  query: FETCH_CONVERSATION,
+                                  variables: { userId, dogId: dog.id }
+                                })
+                                .then(({data: {conversationByUserAndDog}}) => {
+                                  const convoId = conversationByUserAndDog._id;
+                                  const res = client.readQuery({
+                                    query: ACTIVE_CONVERSATIONS
+                                  });
+                                  const convoArray = res.activeConversations.slice(0);
+                                  if (!convoArray.includes(convoId)) {
+                                    convoArray.push(convoId);
+                                  }                                  
+                                  client.writeQuery({
+                                    query: ACTIVE_CONVERSATIONS,
+                                    data: { 
+                                      activeConversations: convoArray,
+                                      conversationFocus: convoId
+                                    }
+                                  })
+                                });
+                            }}
+                          >
+                            <i className="fas fa-comment" />&nbsp;
+                            MESSAGE
+                          </button>
+
+                        )}
+                      </ApolloConsumer>
                       <Query query={LIKED_DOGS} variables={{ userId: userId }}>
                         {({ data }) => (
                           this.likeUnlike({data, userId, dog})

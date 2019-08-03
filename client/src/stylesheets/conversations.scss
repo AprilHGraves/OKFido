@@ -1,0 +1,83 @@
+.conversations {
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  right: 50px;
+}
+
+.side-convo-count {
+  width: 56px;
+  height: 48px;
+}
+
+.convo-dog-pic {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.convo-button {
+  color: #888893;
+  font-size: 24px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  margin-right: 10px;
+  &:hover {
+    background-color: #f1e8ff;
+  }
+}
+
+.main-convo {
+  width: 380px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  box-shadow: 0 0 2px 1px rgba(0,0,0,.1);
+  background-color: #f7f2ff;
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    width: 380px;
+    &-left {
+      width: 200px;
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+    }
+  }
+  &-message-list {
+    height: 280px;
+    padding: 20px 40px;
+    overflow-y: scroll;
+  }
+  &-message-send {
+    background-color: white;    
+    height: 80px;
+    padding: 20px;
+    border-top: 2px solid lightgray;
+    position: relative;
+    &-input {
+      width: 90%;
+    }
+    &-btn {
+      margin-top: 60px;
+      color: #9393a9;
+      position: absolute;
+      right: 30px;
+    }
+  }
+}
+
+.empty-convo {
+  img {
+    height: 100px;
+    width: 100px; 
+  }
+}
+

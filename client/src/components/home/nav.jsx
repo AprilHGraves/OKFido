@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom';
 import { Query, ApolloConsumer } from 'react-apollo';
 import Queries from '../../graphql/queries';
-const { GET_USER_ID } = Queries;
+const { GET_USER } = Queries;
 
 class Nav extends React.Component {
   constructor(props) {
@@ -75,7 +75,7 @@ class Nav extends React.Component {
         {this.state.showNav && (
           <ApolloConsumer>
             {client => (
-              <Query query={GET_USER_ID} variables={{ token: localStorage.getItem("auth-token") }}>
+              <Query query={GET_USER} variables={{ token: localStorage.getItem("auth-token") }}>
                 {({ loading, error, data }) => {
                   if (loading) return "Loading..."
                   if (error) return `Error! ${error.message}`
@@ -100,7 +100,7 @@ class Nav extends React.Component {
                         onClick={e => {
                           e.preventDefault();
                           localStorage.removeItem("auth-token");
-                          client.writeData({ data: { isLoggedIn: false } });
+                          client.writeData({ data: { isLoggedIn: false, activeConversations: [] } });
                           this.props.history.push("/");
                         }}
                       >

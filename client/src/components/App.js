@@ -10,6 +10,7 @@ import Home from './home/home'
 import DogShow from './dogs/DogShow';
 import Nav from './home/nav';
 import LikedDogs from './dogs/LikedDogs';
+import Conversations from './conversations/conversations';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <AuthRoute exact path="/dogs/:id" component={DogShow} routeType="protected"  />
       </Switch>
       <AuthRoute exact path="/" component={SplashFooter} routeType="auth"/>
+      <Route path="/" component={Conversations} />
     </div>
   );
 }

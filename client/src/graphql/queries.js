@@ -1,10 +1,48 @@
 import gql from "graphql-tag";
 
 export default {
+  SPECIFIC_CONVERSATIONS: gql`
+    query SpecificConversations($convoIds: [ID]!) {
+      specificConversations(convoIds: $convoIds) {
+        _id
+        dog {
+          id
+          age
+          name
+          photoUrl
+        }
+        messages {
+          _id,
+          body,
+          author,
+          createdAt
+        }        
+      }
+    }
+  `,
+  ACTIVE_CONVERSATIONS: gql`
+    query ActiveConversations {
+      activeConversations @client
+      conversationFocus @client
+    }
+  `,
+  FETCH_CONVERSATION: gql`
+    query FetchConversation($userId: ID!, $dogId: ID!) {
+      conversationByUserAndDog(user: $userId, dogId: $dogId) {
+        _id
+      }
+    }
+  `,
   FETCH_CONVERSATIONS: gql`
-    query fetchConversations($userId: ID!) {
+    query FetchConversations($userId: ID!) {
       conversationsByUser(userId: $userId) {
-        conversations
+        _id
+        messages {
+          _id,
+          body,
+          author,
+          createdAt
+        }
       }
     }
   `,
@@ -20,10 +58,10 @@ export default {
       isLoggedIn @client
     }
   `,
-  GET_USER_ID: gql`
-    query GetUserId($token: String!) {
+  GET_USER: gql`
+    query GetUser($token: String!) {
       userByToken(token: $token) {
-        _id
+        _id,        
       }
     }
   `,

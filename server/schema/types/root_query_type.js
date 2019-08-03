@@ -18,6 +18,37 @@ const Message = mongoose.model("messages");
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
   fields: () => ({
+    specificConversations: {
+      type: new GraphQLList(ConversationType),
+      args: {
+        convoIds: { type: new GraphQLList(GraphQLID) }
+      },
+      resolve(_, args) {
+        return Conversation.find({
+          _id: {
+            $in: args.convoIds
+          }
+        })
+      }
+    },
+    conversationByUserAndDog: {
+      type: ConversationType,
+      args: {
+        user: { type: GraphQLID },
+        dogId: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return Conversation.findOne(args)
+          .then(data => {
+            if (data) {
+              return data
+            } else {
+              const convo = new Conversation(args);
+              return convo.save()
+            }
+          })
+      }
+    },
     conversationsByUser: {
       type: ConversationType,
       args: {
