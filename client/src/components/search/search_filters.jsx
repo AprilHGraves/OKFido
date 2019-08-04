@@ -1,12 +1,12 @@
 import React from 'react'
+import DogSearchIndex from '../dogs/DogSearchIndex';
 
-class Search extends React.Component {
+class SearchFilters extends React.Component {
   constructor(props){
     super(props)
 
     this.state = {
       queryParams: {
-        color: [],
         coat: [],
         gender: [],
         size: [],
@@ -15,23 +15,6 @@ class Search extends React.Component {
         location: 45202
       },
       possibleOptions: {
-        color: [
-          "Apricot / Beige",
-          "Bicolor",
-          "Black",
-          "Brindle",
-          "Brown / Chocolate",
-          "Golden",
-          "Gray / Blue / Silver",
-          "Harlequin",
-          "Merle (Blue)",
-          "Merle (Red)",
-          "Red / Chestnut / Orange",
-          "Sable",
-          "Tricolor (Brown, Black, & White)",
-          "White / Cream",
-          "Yellow / Tan / Blond / Fawn"
-        ],
         coat: [
           "Hairless",
           "Short",
@@ -133,7 +116,7 @@ class Search extends React.Component {
 
   update(field){
     return e => {
-      if(field !== "distance" && field !== "zipcode"){
+      if(field !== "distance" && field !== "location"){
         let currValues = this.state.queryParams[field];
         let newValues = currValues.slice(0);
         if (newValues.includes(e.target.value)){
@@ -191,98 +174,105 @@ class Search extends React.Component {
 
     return (
       <div className="search-container">
-        <div className="search-filters-container">
-          <div className="search-filters">
+        <div className="search-container">
+          <div className="search-filters-container">
+            <div className="search-filters">
 
-            {/* SIZE */}
-            <span>Dogs of </span>
-            <span className="search-filters-wrapper">
-              <button className="open-filter" onClick={() => this.toggleOptions("size")}>
-                {this.showText("size") !== "all sizes" ? "a " + this.showText("size") : this.showText("size")}
-                {this.showText("size") !== "all sizes" ? " size" : ""}
-              </button>
-              <div className={`filter-search-options size-options ${sizeToggle}`}>
-                <div className="contents">
-                  {this.createFormCheckbox("size")}
+              {/* SIZE */}
+              <span>Dogs of </span>
+              <span className="search-filters-wrapper">
+                <button className="open-filter" onClick={() => this.toggleOptions("size")}>
+                  {this.showText("size") !== "all sizes" ? "a " + this.showText("size") : this.showText("size")}
+                  {this.showText("size") !== "all sizes" ? " size" : ""}
+                </button>
+                <div className={`filter-search-options size-options ${sizeToggle}`}>
+                  <div className="contents">
+                    {this.createFormCheckbox("size")}
+                  </div>
+                  <div className="tail"></div>
                 </div>
-                <div className="tail"></div>
-              </div>
-            </span>
+              </span>
 
-            {/* AGE */}
-            <span> that are </span>
-            <span className="search-filters-wrapper">
-              <button className="open-filter" onClick={() => this.toggleOptions("age")}>
-                {this.showText("age")}
-              </button>
-              <div className={`filter-search-options age-options ${ageToggle}`}>
-                <div className="contents">
-                  {this.createFormCheckbox("age")}
+              {/* AGE */}
+              <span> that are </span>
+              <span className="search-filters-wrapper">
+                <button className="open-filter" onClick={() => this.toggleOptions("age")}>
+                  {this.showText("age")}
+                </button>
+                <div className={`filter-search-options age-options ${ageToggle}`}>
+                  <div className="contents">
+                    {this.createFormCheckbox("age")}
+                  </div>
+                  <div className="tail"></div>
                 </div>
-                <div className="tail"></div>
-              </div>
-            </span>
+              </span>
 
-            {/* COAT */}
-            <span> with </span>
-            <span className="search-filters-wrapper">
-              <button className="open-filter" onClick={() => this.toggleOptions("coat")}>
-                {this.showText("coat") !== "all coats" ? "a " + this.showText("coat") : this.showText("coat")}
-                {this.showText("coat") !== "all coats" ? " coat" : ""}
-              </button>
-              <div className={`filter-search-options coat-options ${coatToggle}`}>
-                <div className="contents">
-                  {this.createFormCheckbox("coat")}
+              {/* COAT */}
+              <span> with </span>
+              <span className="search-filters-wrapper">
+                <button className="open-filter" onClick={() => this.toggleOptions("coat")}>
+                  {this.showText("coat") !== "all coats" ? "a " + this.showText("coat") : this.showText("coat")}
+                  {this.showText("coat") !== "all coats" ? " coat" : ""}
+                </button>
+                <div className={`filter-search-options coat-options ${coatToggle}`}>
+                  <div className="contents">
+                    {this.createFormCheckbox("coat")}
+                  </div>
+                  <div className="tail"></div>
                 </div>
-                <div className="tail"></div>
-              </div>
-            </span>
+              </span>
 
-            {/* GENDER */}
-            <span> that are </span>
-            <span className="search-filters-wrapper">
-              <button className="open-filter" onClick={() => this.toggleOptions("gender")}>
-                {this.showText("gender") === "all genders" ? "both male and female" : this.showText("gender")}
-              </button>
-              <div className={`filter-search-options gender-options ${genderToggle}`}>
-                <div className="contents">
-                  {this.createFormCheckbox("gender")}
+              {/* GENDER */}
+              <span> that are </span>
+              <span className="search-filters-wrapper">
+                <button className="open-filter" onClick={() => this.toggleOptions("gender")}>
+                  {this.showText("gender") === "all genders" ? "both male and female" : this.showText("gender")}
+                </button>
+                <div className={`filter-search-options gender-options ${genderToggle}`}>
+                  <div className="contents">
+                    {this.createFormCheckbox("gender")}
+                  </div>
+                  <div className="tail"></div>
                 </div>
-                <div className="tail"></div>
-              </div>
-            </span>
+              </span>
 
-            {/* DISTANCE */}
-            <span> that live within </span>
-            <span className="search-filters-wrapper">
-              <button className="open-filter" onClick={() => this.toggleOptions("distance")}>
-                {this.state.queryParams.distance}
-              </button>
-              <div className={`filter-search-options distance-options ${distanceToggle}`}>
-                <div className="contents">
-                  {this.createFormInput("distance")}
+              {/* DISTANCE */}
+              <span> that live within </span>
+              <span className="search-filters-wrapper">
+                <button className="open-filter" onClick={() => this.toggleOptions("distance")}>
+                  {this.state.queryParams.distance}
+                </button>
+                <div className={`filter-search-options distance-options ${distanceToggle}`}>
+                  <div className="contents">
+                    {this.createFormInput("distance")}
+                  </div>
+                  <div className="tail"></div>
                 </div>
-                <div className="tail"></div>
-              </div>
-            </span>
+              </span>
 
-            <span> miles from </span>
-            <span className="search-filters-wrapper">
-              <button className="open-filter" onClick={() => this.toggleOptions("location")}>
-                {this.state.queryParams.location}
-              </button>
-              <div className={`filter-search-options distance-options ${locationToggle}`}>
-                <div className="contents">
-                  {this.createFormInput("location")}
+              <span> miles from </span>
+              <span className="search-filters-wrapper">
+                <button className="open-filter" onClick={() => this.toggleOptions("location")}>
+                  {this.state.queryParams.location}
+                </button>
+                <div className={`filter-search-options distance-options ${locationToggle}`}>
+                  <div className="contents">
+                    {this.createFormInput("location")}
+                  </div>
+                  <div className="tail"></div>
                 </div>
-                <div className="tail"></div>
-              </div>
-            </span>
+              </span>
+              {/* <button 
+                id="search"
+                onClick={this.performSearch.bind(this)}
+                >Search</button> */}
+            </div>
           </div>
         </div>
+        <DogSearchIndex searchParams={this.state.queryParams}/>
       </div>
     )
   }
 }
 
-export default Search;
+export default SearchFilters;

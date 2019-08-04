@@ -9,7 +9,7 @@ import AuthRoute from '../util/route_util';
 import Home from './home/home'
 import DogShow from './dogs/DogShow';
 import Nav from './home/nav';
-import Search from './search/search'
+import SearchFilters from './search/search_filters'
 import LikedDogs from './dogs/LikedDogs';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         <AuthRoute path="/" component={Nav} routeType="protected" />
       </Switch>
       <Switch>
-        <AuthRoute exact path="/search" component={Search} routeType="protected"/>
+        <AuthRoute exact path="/search" component={SearchFilters} routeType="protected"/>
         <AuthRoute exact path="/" component={Splash} routeType="auth"/>
         <AuthRoute exact path="/signup" component={Signup} routeType="auth"/>
         <AuthRoute exact path="/login" component={Login} routeType="auth"/>

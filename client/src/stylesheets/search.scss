@@ -16,6 +16,13 @@
   &-wrapper{
     position: relative;
   }
+  #search {
+    padding: 5px;
+    background-color:#f3f5f9;
+    color: #104da1;
+    border-radius: 5px;
+    margin-left: 30px;
+  }
 }
 
 .open-filter {

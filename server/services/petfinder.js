@@ -68,12 +68,33 @@ const dogListTransform = (dogs) => {
   return dogs.filter(dog => dog.photoUrl);
 }
 
-const userSearch = async (args) => {
-  // check which args have values, use that to compose the url for the
-  // get request
+const dogSearch = async (args) => {
+  let searchArgs = JSON.parse(args);
+  return searchByDistAndLoc(searchArgs.distance, searchArgs.location, searchArgs)
 }
 
-const searchByDistAndLoc = async (distance, location) => {
+const searchByDistAndLoc = async (distance, location, searchParams = {}) => {
+  let url = `https://api.petfinder.com/v2/animals?type=dog&location=${location}&distance=${distance}&limit=50`
+  if (searchParams.coat && searchParams.coat.length){
+    url += `&coat=`
+    url += searchParams.coat.map(coat => coat.toLowerCase()).join(',');
+  }
+
+  if (searchParams.gender && searchParams.gender.length){
+    url += `&gender=`
+    url += searchParams.gender.map(gender => gender.toLowerCase()).join(',');
+  }
+
+  if (searchParams.size && searchParams.size.length) {
+    url += `&size=`
+    url += searchParams.size.map(size => size.toLowerCase()).join(',');
+  }
+
+  if (searchParams.age && searchParams.age.length) {
+    url += `&age=`
+    url += searchParams.age.map(age => age.toLowerCase()).join(',');
+  }
+
   const token = await getToken();
 
   // sanitize user input
@@ -82,7 +103,7 @@ const searchByDistAndLoc = async (distance, location) => {
 
   const result = await request({
     method: 'GET',
-    url: `https://api.petfinder.com/v2/animals?type=dog&location=${location}&distance=${distance}&limit=50`,
+    url: url,
     auth: { bearer: token, sendImmediately: true },
     json: true
   })
@@ -158,4 +179,4 @@ const getOneDog = async(dogId) => {
 }
 
 
-module.exports = { getShibas, getOneDog, searchByDistAndLoc }
+module.exports = { getShibas, getOneDog, searchByDistAndLoc, dogSearch }

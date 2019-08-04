@@ -35,6 +35,29 @@ export default {
       }
     }
   `,
+  FETCH_DOGS_FROM_SEARCH: gql`
+    query FetchDogsFromSearch($searchArgs: String!) {
+      searchDogs(searchArgs: $searchArgs) {
+        id,
+        age,
+        gender,
+        size,
+        name,
+        description,
+        photoUrl,
+        contact {
+          address {
+            city
+          }
+        }
+        environment {
+          children,
+          dogs,
+          cats
+        },
+      }
+    }
+  `,
   FETCH_DOGS_BASED_DIST_LOC: gql`
     query FetchDogs($distance: String!, $location: String!) {
       dogs(distance: $distance, location: $location) {

@@ -63,6 +63,13 @@ const RootQueryType = new GraphQLObjectType({
         return Petfinder.searchByDistAndLoc(args.distance, args.location);
       }
     },
+    searchDogs: {
+      type: new GraphQLList(DogType),
+      args: { searchArgs: { type: GraphQLString } },
+      resolve(_, args) {
+        return Petfinder.dogSearch(args.searchArgs);
+      }
+    },
   })
 });
 
