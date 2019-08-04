@@ -2,10 +2,10 @@ import Queries from '../../graphql/queries';
 import React from 'react';
 import { Query, withApollo } from "react-apollo";
 import DogIndexItem from './DogIndexItem';
-const { FETCH_DOGS_BASED_DIST_LOC, GET_USER_ID, GET_USER_PREFS } = Queries;
+const { FETCH_DOGS_FROM_SEARCH, GET_USER_ID, GET_USER_PREFS } = Queries;
 
-class DogIndex extends React.Component {
-  constructor(props){
+class DogSearchIndex extends React.Component {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -14,16 +14,16 @@ class DogIndex extends React.Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getUser()
   }
 
-  getUser = async() => {
+  getUser = async () => {
     let token = localStorage.getItem("auth-token")
 
     let userIdQueryResult = await this.props.client.query({
       query: GET_USER_ID,
-      variables: {token: token}
+      variables: { token: token }
     })
 
     let userPrefsResult = await this.props.client.query({
@@ -31,38 +31,38 @@ class DogIndex extends React.Component {
       variables: { id: userIdQueryResult.data.userByToken._id }
     })
 
-    this.setState({ currentUserPrefs: userPrefsResult.data.user, loading: false})
+    this.setState({ currentUserPrefs: userPrefsResult.data.user, loading: false })
   }
-  
-  render(){
-    if (this.state.loading){
+
+  render() {
+    if (this.state.loading) {
       return <></>
     }
-    let distance = this.state.currentUserPrefs.willTravel;
-    let location = this.state.currentUserPrefs.zipcode.toString();
+
+    let searchArgs = JSON.stringify(this.props.searchParams)
 
     return (
-      <Query 
-        query={FETCH_DOGS_BASED_DIST_LOC} 
-        variables={{ distance, location }}>
+      <Query
+        query={FETCH_DOGS_FROM_SEARCH}
+        variables={{searchArgs}}>
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
-
+          
           return (
             <ul className="dog-items-list">
-              {data.dogs.map(dog => (
-                  <DogIndexItem
-                    key={dog.id}
-                    dog={dog}
-                    userPrefs={this.state.currentUserPrefs}
-                  />
+              {data.searchDogs.map(dog => (
+                <DogIndexItem
+                  key={dog.id}
+                  dog={dog}
+                  userPrefs={this.state.currentUserPrefs}
+                />
               ))}
             </ul>
           );
         }}
       </Query>
-    )  
+    )
   }
 }
-export default withApollo(DogIndex);
+export default withApollo(DogSearchIndex);

@@ -3,6 +3,7 @@ const keys = require('../../config/keys');
 const select = require('cheerio-select');
 const cheerio = require('cheerio')
 
+//the token expires every hour, so this grabs a new one
 let _token = null;
 const getToken = async () => {
   if (_token){
@@ -33,25 +34,9 @@ const getToken = async () => {
   }
 }
 
-// const searchByBreedAndLoc = async(breed, location) => {
-//   const token = await getToken();
-
-//   // sanitize user input
-//   breed = encodeURIComponent(breed);
-//   location = encodeURIComponent(location);
-
-//   const result = await request({
-//     method: 'GET',
-//     url: `https://api.petfinder.com/v2/animals?type=dog&location=${location}&breed=${breed}`,
-//     auth: { bearer: token, sendImmediately: true },
-//     json: true
-//   })
-
-//   return result;
-// }
-
+// create a cache so we don't hit the petfinder api so many times if we already
+// have the data for that one dog
 const dogCache = {};
-
 
 //shape dog data
 const dogTransform = (dog) => {
@@ -81,6 +66,49 @@ const dogTransform = (dog) => {
 const dogListTransform = (dogs) => {
   dogs = dogs.map(dogTransform);
   return dogs.filter(dog => dog.photoUrl);
+}
+
+const dogSearch = async (args) => {
+  let searchArgs = JSON.parse(args);
+  return searchByDistAndLoc(searchArgs.distance, searchArgs.location, searchArgs)
+}
+
+const searchByDistAndLoc = async (distance, location, searchParams = {}) => {
+  let url = `https://api.petfinder.com/v2/animals?type=dog&location=${location}&distance=${distance}&limit=50`
+  if (searchParams.coat && searchParams.coat.length){
+    url += `&coat=`
+    url += searchParams.coat.map(coat => coat.toLowerCase()).join(',');
+  }
+
+  if (searchParams.gender && searchParams.gender.length){
+    url += `&gender=`
+    url += searchParams.gender.map(gender => gender.toLowerCase()).join(',');
+  }
+
+  if (searchParams.size && searchParams.size.length) {
+    url += `&size=`
+    url += searchParams.size.map(size => size.toLowerCase()).join(',');
+  }
+
+  if (searchParams.age && searchParams.age.length) {
+    url += `&age=`
+    url += searchParams.age.map(age => age.toLowerCase()).join(',');
+  }
+
+  const token = await getToken();
+
+  // sanitize user input
+  location = encodeURIComponent(location);
+  distance = encodeURIComponent(distance);
+
+  const result = await request({
+    method: 'GET',
+    url: url,
+    auth: { bearer: token, sendImmediately: true },
+    json: true
+  })
+
+  return dogListTransform(result.animals);
 }
 
 const getShibas = async () => {
@@ -151,4 +179,4 @@ const getOneDog = async(dogId) => {
 }
 
 
-module.exports = { getShibas, getOneDog }
+module.exports = { getShibas, getOneDog, searchByDistAndLoc, dogSearch }

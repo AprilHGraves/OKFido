@@ -23,8 +23,6 @@ class DogShowHeader extends React.Component {
               <span className="profile-basics-asl-spacer">•</span>
               <span className="profile-basics-asl-location">{dog.contact.address.city}, {dog.contact.address.state}</span>
               <span className="profile-basics-asl-spacer">•</span>
-              <span className="profile-basics-asl-match">
-              </span>
               <MatchPercent dog={dog} userPrefs={this.props.userPrefs} from="dog-show"/><span> Match</span>
               <Query query={GET_USER_ID} variables={{ token: localStorage.getItem("auth-token")}}>
                 {({loading, error, data }) => {

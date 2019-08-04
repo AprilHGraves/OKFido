@@ -1,6 +1,11 @@
-.home-container {
+.home-container,
+.search-container {
   background-color: #f3f5f9;
   width: 100%;
+}
+
+.home-container > .dog-items-list {
+  padding-top: 30px;
 }
 
 .navigation {
@@ -22,6 +27,7 @@
       position: relative;
       color: #d6e1f9;
       vertical-align: sub;
+      padding-right: 20px;
       &:hover {
         color: white;
       }
