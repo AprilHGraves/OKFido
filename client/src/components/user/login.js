@@ -98,25 +98,42 @@ class Login extends React.Component {
               >
 
                 {login => (
-                  <button
-                    className="blue-bg"
-                    onClick={e => {
-                      e.preventDefault();
-                      login({
-                        variables: {
-                          email: this.state.email,
-                          password: this.state.password
-                        }
-                      });
-                    }}
-                  >
-                    SIGN IN
+                  <div>
+
+                    <button
+                      className="blue-bg"
+                      onClick={e => {
+                        e.preventDefault();
+                        login({
+                          variables: {
+                            email: this.state.email,
+                            password: this.state.password
+                          }
+                        });
+                      }}
+                    >
+                      SIGN IN
                     </button>
+                    <button
+                      className="blue-bg"
+                      onClick={e => {
+                        e.preventDefault();
+                        login({
+                          variables: {
+                            email: "a@b.c",
+                            password: "abcabc"
+                          }
+                        });
+                      }}>
+                      Demo Login
+                    </button>
+                  </div>
                 )}
               </Mutation>
             )}
             
           </ApolloConsumer>
+          
         </div>
       </div>
     )
