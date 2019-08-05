@@ -31,8 +31,12 @@ const cache = new InMemoryCache({
 //   console.error('Error restoring Apollo cache', error);
 // }
 
+let uri = "http://localhost:5000/graphql";
+if (process.env.NODE_ENV !== 'development'){
+  uri = "/graphql"
+}
 const httpLink = createHttpLink({
-  uri: "http://localhost:5000/graphql"
+  uri
 });
 
 const errorLink = onError(({ graphQLErrors }) => {

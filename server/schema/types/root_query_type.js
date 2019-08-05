@@ -73,7 +73,6 @@ const RootQueryType = new GraphQLObjectType({
         token: { type: GraphQLString }
       },
       resolve(_, args) {
-        console.log("token: ",args.token)
         return AuthService.verifyUser(args);
       }
     },
@@ -112,10 +111,18 @@ const RootQueryType = new GraphQLObjectType({
     },
     dogs: {
       type: new GraphQLList(DogType),
+      args: { distance: { type: GraphQLString }, location: { type: GraphQLString} },
       resolve(_, args) {
-        return Petfinder.getShibas();
+        return Petfinder.searchByDistAndLoc(args.distance, args.location);
       }
-    }
+    },
+    searchDogs: {
+      type: new GraphQLList(DogType),
+      args: { searchArgs: { type: GraphQLString } },
+      resolve(_, args) {
+        return Petfinder.dogSearch(args.searchArgs);
+      }
+    },
   })
 });
 

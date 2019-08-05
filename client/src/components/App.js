@@ -9,6 +9,7 @@ import AuthRoute from '../util/route_util';
 import Home from './home/home'
 import DogShow from './dogs/DogShow';
 import Nav from './home/nav';
+import SearchFilters from './search/search_filters'
 import LikedDogs from './dogs/LikedDogs';
 import Conversations from './conversations/conversations';
 import ConvoIndex from './conversations/conversation_index';
@@ -21,8 +22,8 @@ function App() {
         <AuthRoute path="/" component={Nav} routeType="protected" />
       </Switch>
       <Switch>
+        <AuthRoute exact path="/search" component={SearchFilters} routeType="protected"/>
         <AuthRoute exact path="/" component={Splash} routeType="auth"/>
-        
         <AuthRoute exact path="/signup" component={Signup} routeType="auth"/>
         <AuthRoute exact path="/login" component={Login} routeType="auth"/>
         <AuthRoute exact path="/home" component={Home} routeType="protected" />
@@ -30,8 +31,8 @@ function App() {
         <AuthRoute exact path="/messages" component={ConvoIndex} routeType="protected" />
         <AuthRoute exact path="/dogs/:id" component={DogShow} routeType="protected"  />
       </Switch>
-      <AuthRoute exact path="/" component={SplashFooter} routeType="auth"/>
       <Route path="/" component={Conversations} />
+      <AuthRoute exact path="/" component={SplashFooter} routeType="auth" />
     </div>
   );
 }

@@ -1,7 +1,7 @@
-# OKAdopt
+# OKFido
 
 ## Background and Overview
-OKAdopt is a full stack clone of OKCupid that connects humans who want to adopt dogs with dogs seeking a home.
+OKFido is a full stack clone of OKCupid that connects humans who want to adopt dogs with dogs seeking a home.
 
 ## Functionality and MVP
 * User authentication: sign up and log in

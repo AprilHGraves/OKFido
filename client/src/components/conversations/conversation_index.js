@@ -1,7 +1,7 @@
 import React from 'react';
 import { Query, ApolloConsumer } from "react-apollo";
 import Queries from '../../graphql/queries';
-const { GET_USER, FETCH_CONVERSATIONS, ACTIVE_CONVERSATIONS } = Queries;
+const { GET_USER, FETCH_CONVERSATIONS, FETCH_ONE_DOG, ACTIVE_CONVERSATIONS } = Queries;
 
 const ConvoIndex = () => {
 
@@ -33,35 +33,51 @@ const ConvoIndex = () => {
                         return (
                           <ApolloConsumer key={convo._id}>
                             {client => (
-                              <li
-                                className="convo-li"
-                                  onClick={e => {
-                                    e.preventDefault();
-                                    const res = client.readQuery({
-                                      query: ACTIVE_CONVERSATIONS
-                                    });
-                                    const convoArray = res.activeConversations.slice(0);
-                                    if (!convoArray.includes(convo._id)) {
-                                      convoArray.push(convo._id);
-                                    }
-                                    client.writeQuery({
-                                      query: ACTIVE_CONVERSATIONS,
-                                      data: {
-                                        activeConversations: convoArray,
-                                        conversationFocus: convo._id
-                                      }
-                                    })                                      
-                                  }}
+                              <Query
+                                key={convo.dogId}
+                                query={FETCH_ONE_DOG}
+                                variables={{ dogId: convo.dogId }}
                               >
-                                <img className="dog-convo-pic" src={convo.dog.photoUrl}/>
-                                <div className="dog-convo-info">
-                                  <div className="dog-convo-info-top">
-                                    <div className="dog-convo-info-name">{convo.dog.name}</div>
-                                    <div>{getDate(lastMessage.createdAt)}</div>
-                                  </div>
-                                  <p className="dog-convo-info-message">{lastMessage.body}</p>
-                                </div>
-                              </li>
+                                {({ loading, error, data }) => {
+                                  if (loading || error) {
+                                    return <li></li>
+                                  }
+                                  const dog = data.dog;
+                                  return (
+                                    <li
+                                      className="convo-li"
+                                      onClick={e => {
+                                        e.preventDefault();
+                                        const res = client.readQuery({
+                                          query: ACTIVE_CONVERSATIONS
+                                        });
+                                        const convoArray = res.activeConversations.slice(0);
+                                        if (!convoArray.includes(convo._id)) {
+                                          convoArray.push(convo._id);
+                                        }
+                                        client.writeQuery({
+                                          query: ACTIVE_CONVERSATIONS,
+                                          data: {
+                                            activeConversations: convoArray,
+                                            conversationFocus: convo._id
+                                          }
+                                        })
+                                      }}
+                                    >
+                                      <img className="dog-convo-pic" src={dog.photoUrl} />
+                                      <div className="dog-convo-info">
+                                        <div className="dog-convo-info-top">
+                                          <div className="dog-convo-info-name">{dog.name}</div>
+                                          <div>{getDate(lastMessage.createdAt)}</div>
+                                        </div>
+                                        <p className="dog-convo-info-message">{lastMessage.body}</p>
+                                      </div>
+                                    </li>
+                                  )
+                                }}
+                              </Query>
+                          
+                              
                             )}
                           </ApolloConsumer>
 

@@ -31,7 +31,7 @@ class Home extends React.Component {
       query: GET_USER_PREFS,
       variables: { id: userIdQueryResult.data.userByToken._id }
     })
-    console.log(userPrefsResult.data.user)
+
     if (!userPrefsResult.data.user.zipcode) {
       this.props.history.push('/onboarding')
     } else {

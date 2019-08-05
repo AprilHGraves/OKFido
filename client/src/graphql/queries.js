@@ -38,12 +38,7 @@ export default {
     query FetchConversations($userId: ID!) {
       conversationsByUser(userId: $userId) {
         _id
-        dog {
-          id
-          age
-          name
-          photoUrl
-        }
+        dogId
         messages {
           _id,
           body,
@@ -87,9 +82,32 @@ export default {
       }
     }
   `,
-  FETCH_SHIBAS: gql`
-    query FetchDogs {
-      dogs {
+  FETCH_DOGS_FROM_SEARCH: gql`
+    query FetchDogsFromSearch($searchArgs: String!) {
+      searchDogs(searchArgs: $searchArgs) {
+        id,
+        age,
+        gender,
+        size,
+        name,
+        description,
+        photoUrl,
+        contact {
+          address {
+            city
+          }
+        }
+        environment {
+          children,
+          dogs,
+          cats
+        },
+      }
+    }
+  `,
+  FETCH_DOGS_BASED_DIST_LOC: gql`
+    query FetchDogs($distance: String!, $location: String!) {
+      dogs(distance: $distance, location: $location) {
         id,
         age,
         gender,
