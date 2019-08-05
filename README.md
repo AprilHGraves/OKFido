@@ -1,5 +1,7 @@
 # OKFido
 
+[Live Link](https://okfido.herokuapp.com)
+
 ## Background and Overview
 OKFido is a full stack clone of OKCupid that connects humans who want to adopt dogs with dogs seeking a home.
 
