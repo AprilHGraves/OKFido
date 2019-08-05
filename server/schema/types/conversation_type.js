@@ -16,7 +16,7 @@ const ConversationType = new GraphQLObjectType({
     dog: {
       type: DogType,
       resolve(parentValue) {
-        return Petfinder.getOneDog(parentValue.dogId)
+        return Petfinder.getOneDog(parentValue.dogId);
       }
     },
     messages: {

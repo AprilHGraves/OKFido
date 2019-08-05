@@ -18,6 +18,15 @@ const Message = mongoose.model("messages");
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
   fields: () => ({
+    messagesByConversation: {
+      type: new GraphQLList(MessageType),
+      args: {
+        convoId: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return Message.find({conversation: args.convoId})
+      }
+    },
     specificConversations: {
       type: new GraphQLList(ConversationType),
       args: {
@@ -50,7 +59,7 @@ const RootQueryType = new GraphQLObjectType({
       }
     },
     conversationsByUser: {
-      type: ConversationType,
+      type: new GraphQLList(ConversationType),
       args: {
         userId: { type: GraphQLID }
       },
@@ -64,7 +73,7 @@ const RootQueryType = new GraphQLObjectType({
         token: { type: GraphQLString }
       },
       resolve(_, args) {
-        console.log(args.token)
+        console.log("token: ",args.token)
         return AuthService.verifyUser(args);
       }
     },

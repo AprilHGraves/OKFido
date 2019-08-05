@@ -7,6 +7,7 @@ export default {
         _id
         dog {
           id
+          url
           age
           name
           photoUrl
@@ -37,12 +38,18 @@ export default {
     query FetchConversations($userId: ID!) {
       conversationsByUser(userId: $userId) {
         _id
+        dog {
+          id
+          age
+          name
+          photoUrl
+        }
         messages {
           _id,
           body,
           author,
           createdAt
-        }
+        } 
       }
     }
   `,

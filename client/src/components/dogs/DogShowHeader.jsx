@@ -3,7 +3,7 @@ import MatchPercent from '../match/match'
 import { Query, Mutation, ApolloConsumer } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import Mutations from '../../graphql/mutations';
-const { GET_USER, LIKED_DOGS, FETCH_CONVERSATION, ACTIVE_CONVERSATIONS, CONVERSATION_FOCUS } = Queries;
+const { GET_USER, LIKED_DOGS, FETCH_CONVERSATION, ACTIVE_CONVERSATIONS } = Queries;
 const { LIKE_DOG, UNLIKE_DOG } = Mutations;
 
 class DogShowHeader extends React.Component {

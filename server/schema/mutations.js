@@ -15,33 +15,22 @@ const Petfinder = require("../services/petfinder");
 const mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-    createConversation: {
-      type: ConversationType,
-      args: {
-        user: { type: GraphQLID },
-        dogId: { type: GraphQLID }
-      },
-      resolve(_, args) {
-        return Petfinder.getOneDog(args.dogId)
-          .then(dog => (
-            User.findById(args.user)
-              .then(user => {
-                const conversation = new Conversation(args);
-                return conversation.save()
-              })
-          ))
-      }
-    },
     createMessage: {
-      type: MessageType,
+      type: ConversationType,
       args: {
         body: { type: GraphQLString },
         conversation: { type: GraphQLID },
         author: { type: GraphQLString }
       },
       resolve(_, args) {
-        const msg = new Message(args);
-        return msg.save()
+        return Conversation.findById(args.conversation)
+          .then(convo => {
+            const msg = new Message(args);
+            return msg.save().then(msg => {
+              convo.messages.push(msg._id);
+              return convo.save();
+            })
+          })
       }
     },
     register: {

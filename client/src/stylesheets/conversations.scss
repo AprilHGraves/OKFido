@@ -1,14 +1,90 @@
+.conversations-list {
+  width: 920px;
+  margin: 20px auto;
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+
+.convo-li {
+  box-sizing: border-box;
+  background-color: white;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: 1px solid lightgray;
+  cursor: pointer;
+  &:last-of-type {
+    border: none;
+  }
+}
+
+.dog-convo-pic {
+  display: block; 
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dog-convo-info {
+  width: 700px;
+
+  &-name {
+    font-size: 24px;
+  }
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  &-message {
+    text-overflow: ellipsis;
+  }
+}
 .conversations {
   position: fixed;
   z-index: 2;
   bottom: 0;
   right: 50px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.side-convos {
+  position: relative;
 }
 
 .side-convo-count {
   width: 56px;
   height: 48px;
+  background-color: #f7f2ff;
+  box-shadow: 0 0 2px 1px rgba(0,0,0,.1);
+  display: flex;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  .fa-comment {
+    color: #104da1;
+  }
 }
+
+.side-convos-list {
+  width: 300px;
+  position: absolute;
+  z-index: 2;
+  bottom: 50px;
+  right: 0px;
+  background-color: #f7f2ff;
+  box-shadow: 0 20px 12px -5px #f7f2ff;
+  border-radius: 8px;
+}
+
 
 .convo-dog-pic {
   display: block;
@@ -43,9 +119,9 @@
     align-items: center;
     justify-content: space-between;
     height: 64px;
-    width: 380px;
+    width: 100%;  
     &-left {
-      width: 200px;
+      width: 250px;
       display: flex;
       align-items: center;
       margin-left: 10px;
@@ -54,6 +130,7 @@
   &-message-list {
     height: 280px;
     padding: 20px 40px;
+    position: relative;
     overflow-y: scroll;
   }
   &-message-send {
@@ -74,10 +151,55 @@
   }
 }
 
+.message-container {
+  margin-bottom: 10px;
+}
+
+.message-date {
+  margin: 5px auto;
+  text-align: center;
+  width: 100%;
+}
+
+.message {
+  position: relative;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.user-message {  
+  left: 20px;
+  background-color: #104da1;
+  color: white;
+}
+
+.pet-message {
+  right: 20px;
+  background-color: white;
+}
+
 .empty-convo {
+  width: 90%;
+  height: 90%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   img {
     height: 100px;
-    width: 100px; 
+    width: 80px; 
+  }
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  p {
+    margin: 10px;
+    color: #2a2f35;
+    font-size: 18px;
+    line-height: 24px;
   }
 }
 
