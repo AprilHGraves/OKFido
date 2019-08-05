@@ -3,7 +3,7 @@ import Nav from '../home/nav';
 import Queries from '../../graphql/queries';
 import { Query, withApollo } from "react-apollo";
 import DogShowHeader from './DogShowHeader';
-const { FETCH_ONE_DOG, GET_USER_ID, GET_USER_PREFS } = Queries;
+const { FETCH_ONE_DOG, GET_USER, GET_USER_PREFS } = Queries;
 
 class DogShow extends React.Component {
 
@@ -29,7 +29,7 @@ class DogShow extends React.Component {
     let token = localStorage.getItem("auth-token")
 
     let userIdQueryResult = await this.props.client.query({
-      query: GET_USER_ID,
+      query: GET_USER,
       variables: { token: token }
     })
 

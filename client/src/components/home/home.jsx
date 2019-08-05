@@ -4,7 +4,7 @@ import {withApollo} from 'react-apollo'
 import {withRouter} from 'react-router'
 import Queries from '../../graphql/queries';
 
-const { GET_USER_ID, GET_USER_PREFS } = Queries;
+const { GET_USER, GET_USER_PREFS } = Queries;
 class Home extends React.Component {
   constructor(props){
     super(props)
@@ -23,7 +23,7 @@ class Home extends React.Component {
     let token = localStorage.getItem("auth-token")
 
     let userIdQueryResult = await this.props.client.query({
-      query: GET_USER_ID,
+      query: GET_USER,
       variables: { token: token }
     })
 

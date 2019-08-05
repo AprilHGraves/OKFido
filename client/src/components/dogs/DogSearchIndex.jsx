@@ -2,7 +2,7 @@ import Queries from '../../graphql/queries';
 import React from 'react';
 import { Query, withApollo } from "react-apollo";
 import DogIndexItem from './DogIndexItem';
-const { FETCH_DOGS_FROM_SEARCH, GET_USER_ID, GET_USER_PREFS } = Queries;
+const { FETCH_DOGS_FROM_SEARCH, GET_USER, GET_USER_PREFS } = Queries;
 
 class DogSearchIndex extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class DogSearchIndex extends React.Component {
     let token = localStorage.getItem("auth-token")
 
     let userIdQueryResult = await this.props.client.query({
-      query: GET_USER_ID,
+      query: GET_USER,
       variables: { token: token }
     })
 

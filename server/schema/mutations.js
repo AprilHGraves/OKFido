@@ -5,12 +5,34 @@ const User = mongoose.model("users");
 const UserType = require('./types/user_type');
 const Like = mongoose.model("likes");
 const LikeType = require('./types/like_type');
+const Message = mongoose.model("messages");
+const MessageType = require('./types/message_type');
+const Conversation = mongoose.model("conversations");
+const ConversationType = require("./types/conversation_type");
 const AuthService = require("../services/auth");
 const Petfinder = require("../services/petfinder");
 
 const mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
+    createMessage: {
+      type: ConversationType,
+      args: {
+        body: { type: GraphQLString },
+        conversation: { type: GraphQLID },
+        author: { type: GraphQLString }
+      },
+      resolve(_, args) {
+        return Conversation.findById(args.conversation)
+          .then(convo => {
+            const msg = new Message(args);
+            return msg.save().then(msg => {
+              convo.messages.push(msg._id);
+              return convo.save();
+            })
+          })
+      }
+    },
     register: {
       type: UserType,
       args: {

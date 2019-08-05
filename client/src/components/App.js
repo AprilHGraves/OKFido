@@ -11,6 +11,8 @@ import DogShow from './dogs/DogShow';
 import Nav from './home/nav';
 import SearchFilters from './search/search_filters'
 import LikedDogs from './dogs/LikedDogs';
+import Conversations from './conversations/conversations';
+import ConvoIndex from './conversations/conversation_index';
 
 function App() {
   return (
@@ -26,8 +28,10 @@ function App() {
         <AuthRoute exact path="/login" component={Login} routeType="auth"/>
         <AuthRoute exact path="/home" component={Home} routeType="protected" />
         <AuthRoute exact path="/likes" component={LikedDogs} routeType="protected" />
+        <AuthRoute exact path="/messages" component={ConvoIndex} routeType="protected" />
         <AuthRoute exact path="/dogs/:id" component={DogShow} routeType="protected"  />
       </Switch>
+      <Route path="/" component={Conversations} />
       <AuthRoute exact path="/" component={SplashFooter} routeType="auth" />
     </div>
   );

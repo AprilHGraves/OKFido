@@ -14,7 +14,7 @@ import { HashRouter } from 'react-router-dom';
 
 import Mutations from './graphql/mutations';
 import Queries from './graphql/queries';
-const { GET_USER_ID } = Queries;
+const { GET_USER } = Queries;
 const { VERIFY_USER } = Mutations;
 
 const cache = new InMemoryCache({
@@ -68,6 +68,8 @@ const token = localStorage.getItem("auth-token");
 cache.writeData({
   data: {
     isLoggedIn: Boolean(token),
+    activeConversations: [],
+    conversationFocus: ""
   }
 });
 
