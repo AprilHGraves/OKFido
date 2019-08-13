@@ -69,16 +69,22 @@ class Register extends React.Component {
             </div>
             <div>
               <h1 className="auth-signup-header">Welcome! Who are you?</h1>
-              <button className="auth-fb-button">
-                <i className="fab fa-facebook-f" />
-                SIGN UP WITH FACEBOOK
-              </button>
-              <p>We never post to Facebook</p>
+              {/* <button onClick={e => {
+                e.preventDefault();
+                login({
+                  variables: {
+                    email: "a@b.c",
+                    password: "abcabc"
+                  }
+                });
+              }} className="auth-fb-button">
+                DEMO LOGIN
+              </button> */}
 
-              <div className="auth-separator">
+              {/* <div className="auth-separator">
                 <span className="auth-separator-line"></span>
                 <span className="auth-separator-text">OR</span>
-              </div>
+              </div> */}
               <div className="auth-error-inline-form">{this.state.message}</div>
               <div className="auth-form">
                 <div className="auth-input">
