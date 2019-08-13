@@ -2,8 +2,13 @@
 
 [Live Link](https://okfido.herokuapp.com)
 
-## Background and Overview
+## Overview
 OKFido is a full stack clone of OKCupid that connects humans who want to adopt dogs with dogs seeking a home.
+
+## Developers
+[April Graves](https://github.com/AprilHGraves)
+
+[Christie Brandao](https://github.com/cbrandao18)
 
 ## Functionality and MVP
 * User authentication: sign up and log in
@@ -22,10 +27,6 @@ OKFido is a full stack clone of OKCupid that connects humans who want to adopt d
 * Petfinder API for adoptable dogs' info
 * BCrypt for user authentication
 
-## Technical Challenges
-* Pulling info from the APIs
-* Searching by different criteria
-* Instant Messaging
 
 ## Media
 * Reloading dogs list as search criteria are changed
@@ -33,6 +34,9 @@ OKFido is a full stack clone of OKCupid that connects humans who want to adopt d
 
 * Viewing conversations and messaging dogs
 ![Conversations Gif](./client/src/assets/media/conversations.gif)
+
+* Answer a quick questionnaire when you sign up to tell us what dogs you're interested in
+![Onboarding](./client/src/assets/media/onboarding.png)
 
 ## Future Todos
 * add a cute loading icon ( maybe a dog runs to a person or something :) )
