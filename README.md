@@ -1,5 +1,7 @@
 # OKFido
 
+[Live Link](https://okfido.herokuapp.com)
+
 ## Background and Overview
 OKFido is a full stack clone of OKCupid that connects humans who want to adopt dogs with dogs seeking a home.
 
@@ -31,33 +33,47 @@ OKFido is a full stack clone of OKCupid that connects humans who want to adopt d
 * Christie Brandao
 
 ### Friday, July 26th
-* Project Design
-* Wiki
-* Research on APIs
+* Project Design - both
+* Wiki - both
+* Research on APIs - christie
 * Build skeleton site - both
 * User model - both
-
-### Weekend, July 27th && July 28th
-* Backend and frontend login/register - april
-* Initial styling of splash - christie
+* Basic splash page - christie
+* Backend user sign in/sign up - april
 
 ### Monday, July 29th
 * Dog and Message Models - both
-* Basic splash page - christie
+* Connect external APIs to app - christie
+* Frontend user sign in/sign up - april
 
 ### Tuesday, July 30th
-* Connect external APIs to app - both
-* Index page of adoptable dogs 
-* Show page of dog
+* Index page of adoptable dogs - christie
+* Backend for grabbing dogs from Petfinder API - christie
+* Onboarding questionnaire - april
 
 ### Wednesday, July 31st
-* Index page of adoptable dogs 
-* Show page of dog
-* Search
+* Show page of dog - christie
+* Connect other external api for breed info - christie
+* Navbar / routing / user dropdown - april
+* Like / Unlike - april
 
 ### Thursday, August 1st
-* Search
+* Match percent - christie
+* Like / Unlike - april
+* Liked Dog Index - april
 
 ### Friday, August 2nd
-* Finish features
-* Bonus
+* Search Frontend - christie
+* Converstions - april
+
+### Sunday, August 4th
+* Search backend - christie
+* Messages - april
+
+## Future Todos
+* add a cute loading icon ( maybe a dog runs to a person or something :) )
+* refactoring to make use of similiar components 
+* add more search filters (breed)
+* deleting likes / messages when the dog has already been adopted
+* sorting results by match percent or other criteria
+* user profile to change dog preferences, or zipcode, etc
