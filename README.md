@@ -27,48 +27,12 @@ OKFido is a full stack clone of OKCupid that connects humans who want to adopt d
 * Searching by different criteria
 * Instant Messaging
 
-## Group Members and Work Breakdown
+## Media
+* Reloading dogs list as search criteria are changed
+![Search Gif](./client/src/assets/media/search2.gif)
 
-* April Graves
-* Christie Brandao
-
-### Friday, July 26th
-* Project Design - both
-* Wiki - both
-* Research on APIs - christie
-* Build skeleton site - both
-* User model - both
-* Basic splash page - christie
-* Backend user sign in/sign up - april
-
-### Monday, July 29th
-* Dog and Message Models - both
-* Connect external APIs to app - christie
-* Frontend user sign in/sign up - april
-
-### Tuesday, July 30th
-* Index page of adoptable dogs - christie
-* Backend for grabbing dogs from Petfinder API - christie
-* Onboarding questionnaire - april
-
-### Wednesday, July 31st
-* Show page of dog - christie
-* Connect other external api for breed info - christie
-* Navbar / routing / user dropdown - april
-* Like / Unlike - april
-
-### Thursday, August 1st
-* Match percent - christie
-* Like / Unlike - april
-* Liked Dog Index - april
-
-### Friday, August 2nd
-* Search Frontend - christie
-* Converstions - april
-
-### Sunday, August 4th
-* Search backend - christie
-* Messages - april
+* Viewing conversations and messaging dogs
+![Conversations Gif](./client/src/assets/media/conversations.gif)
 
 ## Future Todos
 * add a cute loading icon ( maybe a dog runs to a person or something :) )
