@@ -13,8 +13,6 @@ import { setContext } from "apollo-link-context";
 import { HashRouter } from 'react-router-dom';
 
 import Mutations from './graphql/mutations';
-import Queries from './graphql/queries';
-const { GET_USER } = Queries;
 const { VERIFY_USER } = Mutations;
 
 const cache = new InMemoryCache({

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { Mutation, Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import Mutations from '../../graphql/mutations';
-const { GET_USER, GET_USER_PREFS } = Queries;
+const { GET_USER } = Queries;
 const { UPDATE_USER } = Mutations;
 
 class Onboarding extends React.Component {

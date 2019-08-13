@@ -1,5 +1,4 @@
 import React from 'react'
-import Nav from '../home/nav';
 import Queries from '../../graphql/queries';
 import { Query, withApollo } from "react-apollo";
 import DogShowHeader from './DogShowHeader';

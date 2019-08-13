@@ -4,7 +4,7 @@ import { Query, Mutation, ApolloConsumer } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import Mutations from '../../graphql/mutations';
 const { CREATE_MESSAGE } = Mutations;
-const { ACTIVE_CONVERSATIONS, SPECIFIC_CONVERSATIONS, MESSAGES_BY_CONVERSATION } = Queries;
+const { ACTIVE_CONVERSATIONS, SPECIFIC_CONVERSATIONS } = Queries;
 
 class Conversations extends React.Component {
   constructor(props) {
@@ -226,7 +226,7 @@ class Conversations extends React.Component {
                                   </div>
                                 ):(
                                   <div className="empty-convo">
-                                    <img src="//cdn.okccdn.com/media/img/illustrations/wright-png/admirer-bg@2x.png" />
+                                    <img src="//cdn.okccdn.com/media/img/illustrations/wright-png/admirer-bg@2x.png"  alt="Illustration"/>
                                     <h3>
                                       Write {mainConvo.dog.name} a message
                                     </h3>

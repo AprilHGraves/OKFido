@@ -64,7 +64,7 @@ const ConvoIndex = () => {
                                         })
                                       }}
                                     >
-                                      <img className="dog-convo-pic" src={dog.photoUrl} />
+                                      <img className="dog-convo-pic" src={dog.photoUrl} alt="Dog"/>
                                       <div className="dog-convo-info">
                                         <div className="dog-convo-info-top">
                                           <div className="dog-convo-info-name">{dog.name}</div>
