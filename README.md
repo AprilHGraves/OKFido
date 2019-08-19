@@ -10,14 +10,6 @@ OKFido is a full stack clone of OKCupid that connects humans who want to adopt d
 
 [Christie Brandao](https://github.com/cbrandao18)
 
-## Functionality and MVP
-* User authentication: sign up and log in
-* Listing of adoptable dogs with index and show pages
-* Dog show page includes dog picture, specific dog info, and breed info
-* Humans can search dogs based on criteria (ie. good with children) and location
-* Humans and dogs can send messages to each other.
-
-
 ## Technologies
 
 * **Backend:** MongoDB/Express/GraphQL
